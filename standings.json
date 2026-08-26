@@ -1,0 +1,1689 @@
+{
+  "generatedAt": "2025-12-21T06:00:00+00:00",
+  "season": 2025,
+  "seasonComplete": true,
+  "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
+  "teamAbbr": "NEB",
+  "teamColor": "#E41C38",
+  "record": {
+    "wins": 7,
+    "losses": 6,
+    "played": 13,
+    "scheduled": 13,
+    "pointsSoFar": 373
+  },
+  "aliveCount": 15,
+  "nextGame": null,
+  "history": [
+    {
+      "played": 1,
+      "column": "Cincinatti",
+      "abbr": "CIN",
+      "result": "W",
+      "ranks": {
+        "Adam Werner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 1
+        },
+        "AJ Rerucha": {
+          "rank": 1,
+          "position": 2,
+          "correct": 1
+        },
+        "Bailey Rasmussen": {
+          "rank": 1,
+          "position": 3,
+          "correct": 1
+        },
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 4,
+          "correct": 1
+        },
+        "Callie Knudson": {
+          "rank": 1,
+          "position": 5,
+          "correct": 1
+        },
+        "Chris Daley": {
+          "rank": 1,
+          "position": 6,
+          "correct": 1
+        },
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 7,
+          "correct": 1
+        },
+        "Joe Toth": {
+          "rank": 1,
+          "position": 8,
+          "correct": 1
+        },
+        "Karen Knudson": {
+          "rank": 1,
+          "position": 9,
+          "correct": 1
+        },
+        "Katie Rerucha": {
+          "rank": 1,
+          "position": 10,
+          "correct": 1
+        },
+        "Kevin Knudson": {
+          "rank": 1,
+          "position": 11,
+          "correct": 1
+        },
+        "Ross Rasmussen": {
+          "rank": 1,
+          "position": 12,
+          "correct": 1
+        },
+        "Steve Warner": {
+          "rank": 1,
+          "position": 13,
+          "correct": 1
+        },
+        "Zac Gillman": {
+          "rank": 1,
+          "position": 14,
+          "correct": 1
+        },
+        "Zach Stull": {
+          "rank": 1,
+          "position": 15,
+          "correct": 1
+        }
+      }
+    },
+    {
+      "played": 2,
+      "column": "Akron",
+      "abbr": "AKR",
+      "result": "W",
+      "ranks": {
+        "Adam Werner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 2
+        },
+        "AJ Rerucha": {
+          "rank": 1,
+          "position": 2,
+          "correct": 2
+        },
+        "Bailey Rasmussen": {
+          "rank": 1,
+          "position": 3,
+          "correct": 2
+        },
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 4,
+          "correct": 2
+        },
+        "Callie Knudson": {
+          "rank": 1,
+          "position": 5,
+          "correct": 2
+        },
+        "Chris Daley": {
+          "rank": 1,
+          "position": 6,
+          "correct": 2
+        },
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 7,
+          "correct": 2
+        },
+        "Joe Toth": {
+          "rank": 1,
+          "position": 8,
+          "correct": 2
+        },
+        "Karen Knudson": {
+          "rank": 1,
+          "position": 9,
+          "correct": 2
+        },
+        "Katie Rerucha": {
+          "rank": 1,
+          "position": 10,
+          "correct": 2
+        },
+        "Kevin Knudson": {
+          "rank": 1,
+          "position": 11,
+          "correct": 2
+        },
+        "Ross Rasmussen": {
+          "rank": 1,
+          "position": 12,
+          "correct": 2
+        },
+        "Steve Warner": {
+          "rank": 1,
+          "position": 13,
+          "correct": 2
+        },
+        "Zac Gillman": {
+          "rank": 1,
+          "position": 14,
+          "correct": 2
+        },
+        "Zach Stull": {
+          "rank": 1,
+          "position": 15,
+          "correct": 2
+        }
+      }
+    },
+    {
+      "played": 3,
+      "column": "HCU",
+      "abbr": "HCU",
+      "result": "W",
+      "ranks": {
+        "Adam Werner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 3
+        },
+        "AJ Rerucha": {
+          "rank": 1,
+          "position": 2,
+          "correct": 3
+        },
+        "Bailey Rasmussen": {
+          "rank": 1,
+          "position": 3,
+          "correct": 3
+        },
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 4,
+          "correct": 3
+        },
+        "Callie Knudson": {
+          "rank": 1,
+          "position": 5,
+          "correct": 3
+        },
+        "Chris Daley": {
+          "rank": 1,
+          "position": 6,
+          "correct": 3
+        },
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 7,
+          "correct": 3
+        },
+        "Joe Toth": {
+          "rank": 1,
+          "position": 8,
+          "correct": 3
+        },
+        "Karen Knudson": {
+          "rank": 1,
+          "position": 9,
+          "correct": 3
+        },
+        "Katie Rerucha": {
+          "rank": 1,
+          "position": 10,
+          "correct": 3
+        },
+        "Kevin Knudson": {
+          "rank": 1,
+          "position": 11,
+          "correct": 3
+        },
+        "Ross Rasmussen": {
+          "rank": 1,
+          "position": 12,
+          "correct": 3
+        },
+        "Steve Warner": {
+          "rank": 1,
+          "position": 13,
+          "correct": 3
+        },
+        "Zac Gillman": {
+          "rank": 1,
+          "position": 14,
+          "correct": 3
+        },
+        "Zach Stull": {
+          "rank": 1,
+          "position": 15,
+          "correct": 3
+        }
+      }
+    },
+    {
+      "played": 4,
+      "column": "Michigan",
+      "abbr": "MICH",
+      "result": "L",
+      "ranks": {
+        "Adam Werner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 4
+        },
+        "Bailey Rasmussen": {
+          "rank": 1,
+          "position": 2,
+          "correct": 4
+        },
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 3,
+          "correct": 4
+        },
+        "Callie Knudson": {
+          "rank": 1,
+          "position": 4,
+          "correct": 4
+        },
+        "Chris Daley": {
+          "rank": 1,
+          "position": 5,
+          "correct": 4
+        },
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 6,
+          "correct": 4
+        },
+        "Karen Knudson": {
+          "rank": 1,
+          "position": 7,
+          "correct": 4
+        },
+        "Kevin Knudson": {
+          "rank": 1,
+          "position": 8,
+          "correct": 4
+        },
+        "Ross Rasmussen": {
+          "rank": 1,
+          "position": 9,
+          "correct": 4
+        },
+        "Steve Warner": {
+          "rank": 1,
+          "position": 10,
+          "correct": 4
+        },
+        "Zac Gillman": {
+          "rank": 1,
+          "position": 11,
+          "correct": 4
+        },
+        "Zach Stull": {
+          "rank": 1,
+          "position": 12,
+          "correct": 4
+        },
+        "AJ Rerucha": {
+          "rank": 13,
+          "position": 13,
+          "correct": 3
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 14,
+          "correct": 3
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 15,
+          "correct": 3
+        }
+      }
+    },
+    {
+      "played": 5,
+      "column": "Mich State",
+      "abbr": "MSU",
+      "result": "W",
+      "ranks": {
+        "Adam Werner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 5
+        },
+        "Bailey Rasmussen": {
+          "rank": 1,
+          "position": 2,
+          "correct": 5
+        },
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 3,
+          "correct": 5
+        },
+        "Callie Knudson": {
+          "rank": 1,
+          "position": 4,
+          "correct": 5
+        },
+        "Chris Daley": {
+          "rank": 1,
+          "position": 5,
+          "correct": 5
+        },
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 6,
+          "correct": 5
+        },
+        "Karen Knudson": {
+          "rank": 1,
+          "position": 7,
+          "correct": 5
+        },
+        "Kevin Knudson": {
+          "rank": 1,
+          "position": 8,
+          "correct": 5
+        },
+        "Ross Rasmussen": {
+          "rank": 1,
+          "position": 9,
+          "correct": 5
+        },
+        "Steve Warner": {
+          "rank": 1,
+          "position": 10,
+          "correct": 5
+        },
+        "Zac Gillman": {
+          "rank": 1,
+          "position": 11,
+          "correct": 5
+        },
+        "Zach Stull": {
+          "rank": 1,
+          "position": 12,
+          "correct": 5
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 4
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 14,
+          "correct": 4
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 3
+        }
+      }
+    },
+    {
+      "played": 6,
+      "column": "Maryland",
+      "abbr": "MD",
+      "result": "W",
+      "ranks": {
+        "Adam Werner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 6
+        },
+        "Bailey Rasmussen": {
+          "rank": 1,
+          "position": 2,
+          "correct": 6
+        },
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 3,
+          "correct": 6
+        },
+        "Callie Knudson": {
+          "rank": 1,
+          "position": 4,
+          "correct": 6
+        },
+        "Chris Daley": {
+          "rank": 1,
+          "position": 5,
+          "correct": 6
+        },
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 6,
+          "correct": 6
+        },
+        "Karen Knudson": {
+          "rank": 1,
+          "position": 7,
+          "correct": 6
+        },
+        "Kevin Knudson": {
+          "rank": 1,
+          "position": 8,
+          "correct": 6
+        },
+        "Ross Rasmussen": {
+          "rank": 1,
+          "position": 9,
+          "correct": 6
+        },
+        "Steve Warner": {
+          "rank": 1,
+          "position": 10,
+          "correct": 6
+        },
+        "Zac Gillman": {
+          "rank": 1,
+          "position": 11,
+          "correct": 6
+        },
+        "Zach Stull": {
+          "rank": 1,
+          "position": 12,
+          "correct": 6
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 5
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 14,
+          "correct": 5
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 3
+        }
+      }
+    },
+    {
+      "played": 7,
+      "column": "Minnesota",
+      "abbr": "MINN",
+      "result": "L",
+      "ranks": {
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 1,
+          "correct": 7
+        },
+        "Adam Werner": {
+          "rank": 2,
+          "position": 2,
+          "correct": 6
+        },
+        "Bailey Rasmussen": {
+          "rank": 2,
+          "position": 3,
+          "correct": 6
+        },
+        "Beth Houpt": {
+          "rank": 2,
+          "position": 4,
+          "correct": 6
+        },
+        "Callie Knudson": {
+          "rank": 2,
+          "position": 5,
+          "correct": 6
+        },
+        "Chris Daley": {
+          "rank": 2,
+          "position": 6,
+          "correct": 6
+        },
+        "Karen Knudson": {
+          "rank": 2,
+          "position": 7,
+          "correct": 6
+        },
+        "Kevin Knudson": {
+          "rank": 2,
+          "position": 8,
+          "correct": 6
+        },
+        "Ross Rasmussen": {
+          "rank": 2,
+          "position": 9,
+          "correct": 6
+        },
+        "Steve Warner": {
+          "rank": 2,
+          "position": 10,
+          "correct": 6
+        },
+        "Zac Gillman": {
+          "rank": 2,
+          "position": 11,
+          "correct": 6
+        },
+        "Zach Stull": {
+          "rank": 2,
+          "position": 12,
+          "correct": 6
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 5
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 14,
+          "correct": 5
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 3
+        }
+      }
+    },
+    {
+      "played": 8,
+      "column": "Northwestern",
+      "abbr": "NW",
+      "result": "W",
+      "ranks": {
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 1,
+          "correct": 8
+        },
+        "Adam Werner": {
+          "rank": 2,
+          "position": 2,
+          "correct": 7
+        },
+        "Bailey Rasmussen": {
+          "rank": 2,
+          "position": 3,
+          "correct": 7
+        },
+        "Beth Houpt": {
+          "rank": 2,
+          "position": 4,
+          "correct": 7
+        },
+        "Callie Knudson": {
+          "rank": 2,
+          "position": 5,
+          "correct": 7
+        },
+        "Chris Daley": {
+          "rank": 2,
+          "position": 6,
+          "correct": 7
+        },
+        "Karen Knudson": {
+          "rank": 2,
+          "position": 7,
+          "correct": 7
+        },
+        "Kevin Knudson": {
+          "rank": 2,
+          "position": 8,
+          "correct": 7
+        },
+        "Ross Rasmussen": {
+          "rank": 2,
+          "position": 9,
+          "correct": 7
+        },
+        "Steve Warner": {
+          "rank": 2,
+          "position": 10,
+          "correct": 7
+        },
+        "Zac Gillman": {
+          "rank": 2,
+          "position": 11,
+          "correct": 7
+        },
+        "Zach Stull": {
+          "rank": 2,
+          "position": 12,
+          "correct": 7
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 6
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 14,
+          "correct": 6
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 4
+        }
+      }
+    },
+    {
+      "played": 9,
+      "column": "USC",
+      "abbr": "USC",
+      "result": "L",
+      "ranks": {
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 1,
+          "correct": 9
+        },
+        "Bailey Rasmussen": {
+          "rank": 2,
+          "position": 2,
+          "correct": 8
+        },
+        "Beth Houpt": {
+          "rank": 2,
+          "position": 3,
+          "correct": 8
+        },
+        "Zach Stull": {
+          "rank": 2,
+          "position": 4,
+          "correct": 8
+        },
+        "Adam Werner": {
+          "rank": 5,
+          "position": 5,
+          "correct": 7
+        },
+        "Callie Knudson": {
+          "rank": 5,
+          "position": 6,
+          "correct": 7
+        },
+        "Chris Daley": {
+          "rank": 5,
+          "position": 7,
+          "correct": 7
+        },
+        "Karen Knudson": {
+          "rank": 5,
+          "position": 8,
+          "correct": 7
+        },
+        "Kevin Knudson": {
+          "rank": 5,
+          "position": 9,
+          "correct": 7
+        },
+        "Ross Rasmussen": {
+          "rank": 5,
+          "position": 10,
+          "correct": 7
+        },
+        "Steve Warner": {
+          "rank": 5,
+          "position": 11,
+          "correct": 7
+        },
+        "Zac Gillman": {
+          "rank": 5,
+          "position": 12,
+          "correct": 7
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 6
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 14,
+          "correct": 6
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 4
+        }
+      }
+    },
+    {
+      "played": 10,
+      "column": "UCLA",
+      "abbr": "UCLA",
+      "result": "W",
+      "ranks": {
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 1,
+          "correct": 10
+        },
+        "Bailey Rasmussen": {
+          "rank": 2,
+          "position": 2,
+          "correct": 9
+        },
+        "Beth Houpt": {
+          "rank": 2,
+          "position": 3,
+          "correct": 9
+        },
+        "Zach Stull": {
+          "rank": 2,
+          "position": 4,
+          "correct": 9
+        },
+        "Adam Werner": {
+          "rank": 5,
+          "position": 5,
+          "correct": 8
+        },
+        "Callie Knudson": {
+          "rank": 5,
+          "position": 6,
+          "correct": 8
+        },
+        "Chris Daley": {
+          "rank": 5,
+          "position": 7,
+          "correct": 8
+        },
+        "Karen Knudson": {
+          "rank": 5,
+          "position": 8,
+          "correct": 8
+        },
+        "Kevin Knudson": {
+          "rank": 5,
+          "position": 9,
+          "correct": 8
+        },
+        "Ross Rasmussen": {
+          "rank": 5,
+          "position": 10,
+          "correct": 8
+        },
+        "Steve Warner": {
+          "rank": 5,
+          "position": 11,
+          "correct": 8
+        },
+        "Zac Gillman": {
+          "rank": 5,
+          "position": 12,
+          "correct": 8
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 7
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 14,
+          "correct": 7
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 5
+        }
+      }
+    },
+    {
+      "played": 11,
+      "column": "Penn State",
+      "abbr": "PSU",
+      "result": "L",
+      "ranks": {
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 1,
+          "correct": 11
+        },
+        "Bailey Rasmussen": {
+          "rank": 2,
+          "position": 2,
+          "correct": 10
+        },
+        "Beth Houpt": {
+          "rank": 2,
+          "position": 3,
+          "correct": 10
+        },
+        "Zach Stull": {
+          "rank": 2,
+          "position": 4,
+          "correct": 10
+        },
+        "Adam Werner": {
+          "rank": 5,
+          "position": 5,
+          "correct": 9
+        },
+        "Callie Knudson": {
+          "rank": 5,
+          "position": 6,
+          "correct": 9
+        },
+        "Chris Daley": {
+          "rank": 5,
+          "position": 7,
+          "correct": 9
+        },
+        "Karen Knudson": {
+          "rank": 5,
+          "position": 8,
+          "correct": 9
+        },
+        "Kevin Knudson": {
+          "rank": 5,
+          "position": 9,
+          "correct": 9
+        },
+        "Ross Rasmussen": {
+          "rank": 5,
+          "position": 10,
+          "correct": 9
+        },
+        "Steve Warner": {
+          "rank": 5,
+          "position": 11,
+          "correct": 9
+        },
+        "Zac Gillman": {
+          "rank": 5,
+          "position": 12,
+          "correct": 9
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 8
+        },
+        "Katie Rerucha": {
+          "rank": 14,
+          "position": 14,
+          "correct": 7
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 5
+        }
+      }
+    },
+    {
+      "played": 12,
+      "column": "Iowa",
+      "abbr": "IOWA",
+      "result": "L",
+      "ranks": {
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 1,
+          "correct": 12
+        },
+        "Bailey Rasmussen": {
+          "rank": 2,
+          "position": 2,
+          "correct": 11
+        },
+        "Beth Houpt": {
+          "rank": 2,
+          "position": 3,
+          "correct": 11
+        },
+        "Zach Stull": {
+          "rank": 2,
+          "position": 4,
+          "correct": 11
+        },
+        "Adam Werner": {
+          "rank": 5,
+          "position": 5,
+          "correct": 10
+        },
+        "Ross Rasmussen": {
+          "rank": 5,
+          "position": 6,
+          "correct": 10
+        },
+        "Zac Gillman": {
+          "rank": 5,
+          "position": 7,
+          "correct": 10
+        },
+        "Callie Knudson": {
+          "rank": 8,
+          "position": 8,
+          "correct": 9
+        },
+        "Chris Daley": {
+          "rank": 8,
+          "position": 9,
+          "correct": 9
+        },
+        "Karen Knudson": {
+          "rank": 8,
+          "position": 10,
+          "correct": 9
+        },
+        "Kevin Knudson": {
+          "rank": 8,
+          "position": 11,
+          "correct": 9
+        },
+        "Steve Warner": {
+          "rank": 8,
+          "position": 12,
+          "correct": 9
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 8
+        },
+        "Katie Rerucha": {
+          "rank": 14,
+          "position": 14,
+          "correct": 7
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 5
+        }
+      }
+    },
+    {
+      "played": 13,
+      "column": "Bowl Game",
+      "abbr": "UTAH",
+      "result": "L",
+      "ranks": {
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 1,
+          "correct": 12
+        },
+        "Dan Sullivan": {
+          "rank": 1,
+          "position": 2,
+          "correct": 12
+        },
+        "Bailey Rasmussen": {
+          "rank": 3,
+          "position": 3,
+          "correct": 11
+        },
+        "Zach Stull": {
+          "rank": 3,
+          "position": 4,
+          "correct": 11
+        },
+        "Adam Werner": {
+          "rank": 5,
+          "position": 5,
+          "correct": 10
+        },
+        "Ross Rasmussen": {
+          "rank": 5,
+          "position": 6,
+          "correct": 10
+        },
+        "Zac Gillman": {
+          "rank": 5,
+          "position": 7,
+          "correct": 10
+        },
+        "Callie Knudson": {
+          "rank": 8,
+          "position": 8,
+          "correct": 9
+        },
+        "Chris Daley": {
+          "rank": 8,
+          "position": 9,
+          "correct": 9
+        },
+        "Karen Knudson": {
+          "rank": 8,
+          "position": 10,
+          "correct": 9
+        },
+        "Kevin Knudson": {
+          "rank": 8,
+          "position": 11,
+          "correct": 9
+        },
+        "Steve Warner": {
+          "rank": 8,
+          "position": 12,
+          "correct": 9
+        },
+        "Joe Toth": {
+          "rank": 13,
+          "position": 13,
+          "correct": 8
+        },
+        "Katie Rerucha": {
+          "rank": 13,
+          "position": 14,
+          "correct": 8
+        },
+        "AJ Rerucha": {
+          "rank": 15,
+          "position": 15,
+          "correct": 5
+        }
+      }
+    }
+  ],
+  "games": [
+    {
+      "column": "Cincinatti",
+      "opponent": "Cincinnati",
+      "kickoff": "2025-08-29T00:00Z",
+      "site": "neutral",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
+      "abbr": "CIN",
+      "color": "#E00122",
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 20,
+      "opponentPoints": 17,
+      "note": null
+    },
+    {
+      "column": "Akron",
+      "opponent": "Akron",
+      "kickoff": "2025-09-06T23:30Z",
+      "site": "home",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2006.png",
+      "abbr": "AKR",
+      "color": "#041E42",
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 68,
+      "opponentPoints": 0,
+      "note": null
+    },
+    {
+      "column": "HCU",
+      "opponent": "Houston Christian",
+      "kickoff": "2025-09-13T16:00Z",
+      "site": "home",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2277.png",
+      "abbr": "HCU",
+      "color": "#20366B",
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 59,
+      "opponentPoints": 7,
+      "note": null
+    },
+    {
+      "column": "Michigan",
+      "opponent": "Michigan",
+      "kickoff": "2025-09-20T23:30Z",
+      "site": "home",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/130.png",
+      "abbr": "MICH",
+      "color": "#00274C",
+      "state": "official",
+      "result": "L",
+      "nebraskaPoints": 27,
+      "opponentPoints": 30,
+      "note": null
+    },
+    {
+      "column": "Mich State",
+      "opponent": "Michigan State",
+      "kickoff": "2025-10-04T16:00Z",
+      "site": "home",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/127.png",
+      "abbr": "MSU",
+      "color": "#18453B",
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 38,
+      "opponentPoints": 27,
+      "note": null
+    },
+    {
+      "column": "Maryland",
+      "opponent": "Maryland",
+      "kickoff": "2025-10-11T16:00Z",
+      "site": "away",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/120.png",
+      "abbr": "MD",
+      "color": "#E03A3E",
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 34,
+      "opponentPoints": 31,
+      "note": null
+    },
+    {
+      "column": "Minnesota",
+      "opponent": "Minnesota",
+      "kickoff": "2025-10-18T16:00Z",
+      "site": "away",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/135.png",
+      "abbr": "MINN",
+      "color": "#7A0019",
+      "state": "official",
+      "result": "L",
+      "nebraskaPoints": 6,
+      "opponentPoints": 24,
+      "note": null
+    },
+    {
+      "column": "Northwestern",
+      "opponent": "Northwestern",
+      "kickoff": "2025-10-25T18:30Z",
+      "site": "home",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png",
+      "abbr": "NW",
+      "color": "#4E2A84",
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 28,
+      "opponentPoints": 21,
+      "note": null
+    },
+    {
+      "column": "USC",
+      "opponent": "USC",
+      "kickoff": "2025-11-01T23:30Z",
+      "site": "home",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
+      "abbr": "USC",
+      "color": "#990000",
+      "state": "official",
+      "result": "L",
+      "nebraskaPoints": 17,
+      "opponentPoints": 21,
+      "note": null
+    },
+    {
+      "column": "UCLA",
+      "opponent": "UCLA",
+      "kickoff": "2025-11-09T01:00Z",
+      "site": "away",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
+      "abbr": "UCLA",
+      "color": "#2D68C4",
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 28,
+      "opponentPoints": 21,
+      "note": null
+    },
+    {
+      "column": "Penn State",
+      "opponent": "Penn State",
+      "kickoff": "2025-11-23T00:00Z",
+      "site": "away",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
+      "abbr": "PSU",
+      "color": "#041E42",
+      "state": "official",
+      "result": "L",
+      "nebraskaPoints": 10,
+      "opponentPoints": 37,
+      "note": null
+    },
+    {
+      "column": "Iowa",
+      "opponent": "Iowa",
+      "kickoff": "2025-11-28T17:00Z",
+      "site": "home",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png",
+      "abbr": "IOWA",
+      "color": "#FFCD00",
+      "state": "official",
+      "result": "L",
+      "nebraskaPoints": 16,
+      "opponentPoints": 40,
+      "note": null
+    },
+    {
+      "column": "Bowl Game",
+      "opponent": "Utah",
+      "kickoff": "2025-12-20T22:30Z",
+      "site": "neutral",
+      "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
+      "abbr": "UTAH",
+      "color": "#CC0000",
+      "state": "official",
+      "result": "L",
+      "nebraskaPoints": 22,
+      "opponentPoints": 44,
+      "note": null
+    }
+  ],
+  "standings": [
+    {
+      "name": "Beth Houpt",
+      "correct": 12,
+      "diff": 7,
+      "guess": 380,
+      "photo": null,
+      "rank": 1,
+      "position": 1,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "L"
+      ],
+      "maxPossible": 12,
+      "movement": 1,
+      "eliminated": false
+    },
+    {
+      "name": "Dan Sullivan",
+      "correct": 12,
+      "diff": 45,
+      "guess": 328,
+      "photo": null,
+      "rank": 2,
+      "position": 2,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "maxPossible": 12,
+      "movement": -1,
+      "eliminated": false
+    },
+    {
+      "name": "Zach Stull",
+      "correct": 11,
+      "diff": 25,
+      "guess": 348,
+      "photo": null,
+      "rank": 3,
+      "position": 3,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "maxPossible": 11,
+      "movement": -1,
+      "eliminated": false
+    },
+    {
+      "name": "Bailey Rasmussen",
+      "correct": 11,
+      "diff": 28,
+      "guess": 345,
+      "photo": null,
+      "rank": 4,
+      "position": 4,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "maxPossible": 11,
+      "movement": -2,
+      "eliminated": false
+    },
+    {
+      "name": "Adam Werner",
+      "correct": 10,
+      "diff": 4,
+      "guess": 369,
+      "photo": null,
+      "rank": 5,
+      "position": 5,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "maxPossible": 10,
+      "movement": 0,
+      "eliminated": false
+    },
+    {
+      "name": "Zac Gillman",
+      "correct": 10,
+      "diff": 36,
+      "guess": 337,
+      "photo": null,
+      "rank": 6,
+      "position": 6,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "maxPossible": 10,
+      "movement": -1,
+      "eliminated": false
+    },
+    {
+      "name": "Ross Rasmussen",
+      "correct": 10,
+      "diff": 47,
+      "guess": 420,
+      "photo": null,
+      "rank": 7,
+      "position": 7,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "maxPossible": 10,
+      "movement": -2,
+      "eliminated": false
+    },
+    {
+      "name": "Karen Knudson",
+      "correct": 9,
+      "diff": 24,
+      "guess": 397,
+      "photo": null,
+      "rank": 8,
+      "position": 8,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 9,
+      "movement": 0,
+      "eliminated": false
+    },
+    {
+      "name": "Kevin Knudson",
+      "correct": 9,
+      "diff": 25,
+      "guess": 398,
+      "photo": null,
+      "rank": 9,
+      "position": 9,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 9,
+      "movement": -1,
+      "eliminated": false
+    },
+    {
+      "name": "Callie Knudson",
+      "correct": 9,
+      "diff": 39,
+      "guess": 412,
+      "photo": null,
+      "rank": 10,
+      "position": 10,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 9,
+      "movement": -2,
+      "eliminated": false
+    },
+    {
+      "name": "Steve Warner",
+      "correct": 9,
+      "diff": 39,
+      "guess": 334,
+      "photo": null,
+      "rank": 10,
+      "position": 11,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 9,
+      "movement": -2,
+      "eliminated": false
+    },
+    {
+      "name": "Chris Daley",
+      "correct": 9,
+      "diff": 57,
+      "guess": 316,
+      "photo": null,
+      "rank": 12,
+      "position": 12,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 9,
+      "movement": -4,
+      "eliminated": false
+    },
+    {
+      "name": "Joe Toth",
+      "correct": 8,
+      "diff": 8,
+      "guess": 365,
+      "photo": null,
+      "rank": 13,
+      "position": 13,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 8,
+      "movement": 0,
+      "eliminated": false
+    },
+    {
+      "name": "Katie Rerucha",
+      "correct": 8,
+      "diff": 63,
+      "guess": 310,
+      "photo": null,
+      "rank": 14,
+      "position": 14,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L"
+      ],
+      "maxPossible": 8,
+      "movement": 0,
+      "eliminated": false
+    },
+    {
+      "name": "AJ Rerucha",
+      "correct": 5,
+      "diff": 71,
+      "guess": 444,
+      "photo": null,
+      "rank": 15,
+      "position": 15,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "L",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "maxPossible": 5,
+      "movement": 0,
+      "eliminated": false
+    }
+  ]
+}

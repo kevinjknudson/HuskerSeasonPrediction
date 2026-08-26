@@ -1,0 +1,19 @@
+{
+  "season": 2026,
+  "espnTeam": "nebraska",
+  "espnTeamId": 158,
+  "teamAbbr": "NEB",
+  "teamColor": "#E41C38",
+
+  "picksLink": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTY-8Pb4QlHdm6D4Iit5B4jz3g8Q_WYjra-onrXeuL4gb6Z4btZ5Z6gMhCKE5suhFi9sNz-UxGrXWmh/pub?gid=684767672&single=true&output=csv",
+
+  "settleHours": 6,
+
+  "bowlColumns": ["Bowl Game Performance"],
+
+  "photos": {},
+
+  "aliases": {},
+
+  "overrides": {}
+}

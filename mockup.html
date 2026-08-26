@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Husker Pool — 2025 final</title>
+<meta name="description" content="Standings for the annual Husker football prediction pool." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600;700;800;900&family=Karla:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --turf:#1B5533;
+    --turf-deep:#0F3722;
+    --chalk:#FFFFFF;
+    --scarlet:#D8102F;
+    --scarlet-lo:#B00C26;
+    --scarlet-hi:#F0334F;
+    --cream:#FBF6EC;
+    --cream-2:#EDE3D1;
+    --bark:#241A14;
+    --bark-soft:#7A6857;
+    --good:#1C7A42;
+    --disp:'Rubik',system-ui,sans-serif;
+    --sans:'Karla',system-ui,-apple-system,sans-serif;
+
+    /* chamfered plate silhouettes */
+    --cut-lg:polygon(28px 0,calc(100% - 28px) 0,100% 28px,100% calc(100% - 28px),
+                     calc(100% - 28px) 100%,28px 100%,0 calc(100% - 28px),0 28px);
+    --cut-md:polygon(16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),
+                     calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px),0 16px);
+    --cut-sm:polygon(9px 0,calc(100% - 9px) 0,100% 9px,100% calc(100% - 9px),
+                     calc(100% - 9px) 100%,9px 100%,0 calc(100% - 9px),0 9px);
+    --cut-tab:polygon(14px 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,
+                      14px 100%,0 50%);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:var(--sans);font-size:16px;line-height:1.5;color:var(--chalk);
+    -webkit-font-smoothing:antialiased;padding-bottom:70px;
+    background-color:var(--turf);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 180px),
+      repeating-linear-gradient(90deg,
+        rgba(255,255,255,.03) 0 clamp(48px,8vw,104px),
+        rgba(0,0,0,.05) clamp(48px,8vw,104px) clamp(96px,16vw,208px)),
+      linear-gradient(180deg,#22633C 0%,#17492D 58%,#0E3520 100%);
+    background-attachment:fixed;
+  }
+  /* scattered marks, like the confetti on the reference board */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;
+    background-image:url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='620'%20height='620'%20fill='none'>%20<circle%20cx='70'%20cy='96'%20r='15'%20stroke='%23D8102F'%20stroke-width='4'/>%20<circle%20cx='70'%20cy='96'%20r='5'%20fill='%23D8102F'/>%20<circle%20cx='196'%20cy='44'%20r='6'%20fill='%23FFFFFF'/>%20<path%20d='M318%20108l26%2026M344%20108l-26%2026'%20stroke='%23FFFFFF'%20stroke-width='7'%20stroke-linecap='round'/>%20<circle%20cx='545'%20cy='214'%20r='13'%20stroke='%23FFFFFF'%20stroke-width='4'/>%20<circle%20cx='104'%20cy='330'%20r='7'%20fill='%23D8102F'/>%20<path%20d='M470%20400l22%2022M492%20400l-22%2022'%20stroke='%23D8102F'%20stroke-width='8'%20stroke-linecap='round'/>%20<circle%20cx='262'%20cy='516'%20r='5'%20fill='%23FFFFFF'/>%20<circle%20cx='392'%20cy='566'%20r='14'%20stroke='%23D8102F'%20stroke-width='4'/>%20<path%20d='M120%20560l20%2020M140%20560l-20%2020'%20stroke='%23FFFFFF'%20stroke-width='6'%20stroke-linecap='round'/>%20<circle%20cx='580'%20cy='452'%20r='6'%20fill='%23FFFFFF'/>%20<circle%20cx='232'%20cy='240'%20r='11'%20stroke='%23D8102F'%20stroke-width='3'/>%20</svg>");
+    background-size:620px 620px;
+  }
+  /* fine grain */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.13;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 20px}
+
+  /* ── Plate system ────────────────────────────────────────── */
+  .plate{position:relative;filter:drop-shadow(0 10px 20px rgba(0,0,0,.34))}
+  .plate>.edge{padding:3px;clip-path:var(--cut,var(--cut-md))}
+  .plate>.edge>.face{clip-path:var(--cut,var(--cut-md));position:relative;overflow:hidden}
+
+  .crest{--cut:var(--cut-lg)}
+  .crest>.edge{background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.55) 100%)}
+  .crest>.edge>.face{
+    background:linear-gradient(168deg,var(--scarlet-hi) 0%,var(--scarlet) 42%,var(--scarlet-lo) 100%);
+    padding:38px 26px;text-align:center}
+  /* speed slashes on the shoulders */
+  .crest .face::before,.crest .face::after{
+    content:"";position:absolute;top:22%;width:74px;height:56%;
+    background:repeating-linear-gradient(-18deg,
+      rgba(255,255,255,.16) 0 6px, transparent 6px 22px)}
+  .crest .face::before{left:-10px}
+  .crest .face::after{right:-10px}
+  .rivets{position:absolute;top:12px;display:flex;gap:9px}
+  .rivets.l{left:16px}.rivets.r{right:16px}
+  .rivets i{width:7px;height:7px;border-radius:50%;
+    background:radial-gradient(circle at 32% 30%,#fff,rgba(0,0,0,.42));
+    box-shadow:0 1px 1px rgba(0,0,0,.4)}
+
+  h1{font-family:var(--disp);font-weight:900;color:var(--chalk);
+    font-size:clamp(28px,7.6vw,56px);line-height:.98;letter-spacing:-.028em;
+    text-transform:uppercase;margin:0;
+    text-shadow:0 3px 0 rgba(0,0,0,.22),0 0 22px rgba(0,0,0,.18)}
+
+  .ribbon{--cut:var(--cut-tab);max-width:470px;margin:-22px auto 0;
+    position:relative;z-index:2}
+  .ribbon>.edge{background:rgba(255,255,255,.6)}
+  .ribbon>.edge>.face{background:linear-gradient(180deg,#fff 0%,var(--cream-2) 100%);
+    padding:11px 34px;text-align:center}
+  .ribbon{max-width:220px}
+  .ribbon span{font-family:var(--disp);font-weight:900;font-size:clamp(15px,4vw,20px);
+    letter-spacing:.22em;text-transform:uppercase;color:var(--bark)}
+
+  header{padding:40px 0 8px}
+
+  /* ── Section headings ────────────────────────────────────── */
+  h2{font-family:var(--disp);font-weight:800;font-size:13px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--chalk);margin:42px 0 15px;
+    display:flex;align-items:center;gap:12px}
+  h2 .tick{width:13px;height:13px;flex:none;background:var(--scarlet);
+    clip-path:polygon(0 0,100% 50%,0 100%)}
+  h2::after{content:"";flex:1;height:2px;
+    background:repeating-linear-gradient(90deg,
+      rgba(255,255,255,.4) 0 8px, transparent 8px 13px)}
+
+  /* ── Leaderboard panel ───────────────────────────────────── */
+  .panel{--cut:var(--cut-lg)}
+  .panel>.edge{background:rgba(255,255,255,.24)}
+  .panel>.edge>.face{background:rgba(8,32,19,.55);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    padding:10px 18px 30px}
+
+  .podium{display:flex;align-items:flex-end;justify-content:center;
+    gap:clamp(6px,4vw,40px);padding:28px 0 6px}
+  .pod{display:flex;flex-direction:column;align-items:center;text-align:center;
+    width:clamp(100px,29vw,178px);animation:rise .5s ease both}
+  .pod.first{margin-bottom:clamp(18px,5.5vw,34px);animation-delay:.05s}
+  .pod.third{animation-delay:.16s}
+
+  .disc{position:relative;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(158deg,var(--scarlet-hi) 0%,var(--scarlet-lo) 100%);
+    font-family:var(--disp);font-weight:900;color:#fff;line-height:1;
+    overflow:hidden;flex:none;letter-spacing:-.02em}
+  .disc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pod.first .disc{width:clamp(98px,26vw,140px);height:clamp(98px,26vw,140px);
+    font-size:clamp(32px,8.4vw,46px);
+    box-shadow:0 0 0 4px var(--chalk),0 0 0 8px var(--scarlet),0 9px 20px rgba(0,0,0,.36)}
+  .pod.second .disc,.pod.third .disc{width:clamp(74px,20vw,106px);height:clamp(74px,20vw,106px);
+    font-size:clamp(24px,6.4vw,34px);
+    box-shadow:0 0 0 3px var(--chalk),0 6px 16px rgba(0,0,0,.3)}
+
+
+  /* ── Movement + stakes ───────────────────────────────────── */
+  .chips{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:13px;
+    flex-wrap:wrap}
+  .chip{display:inline-block;padding:4px 13px 3px;
+    clip-path:var(--cut-sm);background:rgba(255,255,255,.18);text-transform:uppercase;
+    font-family:var(--disp);font-weight:900;font-size:10.5px;letter-spacing:.14em;
+    color:rgba(255,255,255,.88)}
+  .pod.first .chip{background:var(--scarlet);color:#fff}
+  .mv{display:inline-flex;align-items:center;gap:4px;padding:4px 9px 3px;
+    clip-path:var(--cut-sm);font-family:var(--disp);font-weight:900;font-size:10.5px;
+    letter-spacing:.06em}
+  .mv i{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent}
+  .mv.up{background:rgba(76,201,120,.2);color:#7FE3A3}
+  .mv.up i{border-bottom:6px solid #7FE3A3}
+  .mv.dn{background:rgba(216,16,47,.26);color:#FF9AA9}
+  .mv.dn i{border-top:6px solid #FF9AA9}
+  .mv.nc{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5)}
+  .mv.out{background:rgba(255,255,255,.09);color:rgba(255,255,255,.5)}
+  .pod.out .disc,.card.out .disc{filter:grayscale(.85);opacity:.6}
+  .pod.out .pname,.card.out .pname{color:rgba(255,255,255,.55)}
+  .pod.out .pstat,.card.out .pstat{color:rgba(255,255,255,.45)}
+
+  .alive{display:flex;align-items:center;gap:9px;margin:14px 4px 0;
+    font-family:var(--disp);font-weight:800;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:rgba(255,255,255,.62)}
+  .alive::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.16)}
+  .alive b{color:var(--chalk)}
+  .preseason{text-align:center;padding:26px 10px 6px;font-family:var(--disp);
+    font-weight:800;font-size:14px;letter-spacing:.02em;color:rgba(255,255,255,.8)}
+
+  /* ── Next-game split ─────────────────────────────────────── */
+  .sb.next{flex:1 1 40%}
+  .nx{display:flex;align-items:center;justify-content:center;gap:8px}
+  .nx b{font-family:var(--disp);font-weight:900;font-size:21px;letter-spacing:-.02em;
+    line-height:1;color:var(--scarlet)}
+  .split{border-top:1px solid rgba(36,26,20,.12);padding:13px 16px 15px;color:var(--bark)}
+  .split-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--bark-soft)}
+  .split-row span{display:inline-flex;align-items:center;gap:7px}
+  .split-row b{font-size:15px;font-weight:900;color:var(--bark)}
+  .bar{display:flex;height:10px;margin-top:9px;overflow:hidden;
+    clip-path:polygon(3px 0,100% 0,100% calc(100% - 3px),calc(100% - 3px) 100%,0 100%,0 3px)}
+  .bar i{display:block;background:var(--c)}
+
+  /* ── Week-by-week chart ──────────────────────────────────── */
+  .chart{--cut:var(--cut-md)}
+  .chart>.edge{background:rgba(255,255,255,.24)}
+  .chart>.edge>.face{background:rgba(8,32,19,.55);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:16px 4px 18px}
+  .chart-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:0 14px 12px}
+  .chart-when{font-family:var(--disp);font-weight:800;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .chart-when b{color:var(--chalk)}
+  .chart-ctrl{display:flex;align-items:center;gap:10px;margin-left:auto}
+  button.play{font-family:var(--disp);font-weight:900;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--bark);background:linear-gradient(180deg,#fff,var(--cream-2));
+    border:0;clip-path:var(--cut-sm);padding:8px 15px;cursor:pointer}
+  button.play:hover{filter:brightness(1.06)}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:132px;height:4px;
+    background:rgba(255,255,255,.28);outline:0;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;
+    border-radius:50%;background:var(--chalk);border:3px solid var(--scarlet);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;
+    background:var(--chalk);border:3px solid var(--scarlet);cursor:pointer}
+  .chart-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 14px}
+  .chart-body{position:relative}
+  .chart-body svg{display:block}
+  .gl{stroke:rgba(255,255,255,.07);stroke-width:1}
+  .lab{font-family:'Rubik',sans-serif;font-weight:800;font-size:9px;letter-spacing:.06em;
+    text-anchor:middle}
+  .lab.w{fill:#7FE3A3}.lab.l{fill:#FF9AA9}
+  .rowno{font-family:'Rubik',sans-serif;font-weight:700;font-size:9.5px;
+    fill:rgba(255,255,255,.34);text-anchor:end}
+  .ln{fill:none;stroke-linejoin:round;stroke-linecap:round;
+    stroke:rgba(255,255,255,.2);stroke-width:1.6;transition:stroke-opacity .2s}
+  .ln.t5{stroke:rgba(216,16,47,.62);stroke-width:2.2}
+  .ln.t3{stroke:var(--scarlet);stroke-width:2.6}
+  .ln.t1{stroke:var(--chalk);stroke-width:3}
+  .cdisc{position:absolute;width:22px;height:22px;border-radius:50%;overflow:hidden;
+    display:grid;place-items:center;font-family:var(--disp);font-weight:900;font-size:8.5px;
+    color:#fff;background:linear-gradient(158deg,var(--scarlet-hi),var(--scarlet-lo));
+    box-shadow:0 0 0 2px rgba(255,255,255,.55),0 2px 5px rgba(0,0,0,.4);
+    transition:left .55s cubic-bezier(.4,0,.2,1),top .55s cubic-bezier(.4,0,.2,1)}
+  .cdisc.lead{box-shadow:0 0 0 2px var(--chalk),0 0 0 4px var(--scarlet),0 2px 6px rgba(0,0,0,.45)}
+  .cdisc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .chart-note{padding:12px 14px 0;font-size:12px;color:rgba(255,255,255,.55)}
+
+  .pname{font-family:var(--disp);font-weight:800;color:var(--chalk);line-height:1.08;
+    margin-top:8px;font-size:clamp(15px,4vw,20px);letter-spacing:-.01em}
+  .pod.first .pname{font-size:clamp(18px,4.8vw,26px);font-weight:900}
+  .pstat{font-family:var(--sans);font-size:12.5px;font-weight:700;
+    color:rgba(255,255,255,.95);margin-top:6px}
+  .ptb{font-size:11.5px;font-weight:500;color:rgba(255,255,255,.62);margin-top:1px}
+
+  .runners{display:flex;justify-content:center;gap:clamp(14px,6vw,54px);
+    margin-top:32px;flex-wrap:wrap}
+  .card{display:flex;flex-direction:column;align-items:center;text-align:center;
+    width:148px;animation:rise .5s ease both}
+  .card .disc{width:68px;height:68px;font-size:23px;
+    box-shadow:0 0 0 3px rgba(255,255,255,.9),0 5px 14px rgba(0,0,0,.26)}
+  .card .chips{margin-top:11px;gap:5px}
+  .card .pname{font-size:15px;margin-top:6px}
+  .card .pstat{font-size:11.5px;margin-top:4px}
+  .card .ptb{font-size:10.5px}
+
+  .more-wrap{text-align:center;margin-top:30px}
+  button.more{font-family:var(--disp);font-weight:900;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--bark);background:linear-gradient(180deg,#fff,var(--cream-2));
+    border:0;clip-path:var(--cut-sm);padding:12px 26px;cursor:pointer;
+    transition:filter .15s}
+  button.more:hover{filter:brightness(1.06) saturate(1.2)}
+  .rest{display:grid;grid-template-columns:repeat(5,1fr);gap:30px 12px;margin-top:32px}
+  .rest[hidden]{display:none}
+  .rest .card{width:auto}
+  .rest .disc{width:58px;height:58px;font-size:19px}
+  .rest .pname{font-size:15px}
+
+  /* ── Season board ────────────────────────────────────────── */
+  .scoreboard{--cut:var(--cut-md)}
+  .scoreboard>.edge{background:rgba(255,255,255,.65)}
+  .scoreboard>.edge>.face{background:linear-gradient(180deg,#fff 0%,var(--cream) 55%,var(--cream-2) 100%);
+    color:var(--bark)}
+  .sb{flex:1 1 25%;min-width:112px;padding:15px 8px 14px;text-align:center;
+    border-right:1px solid rgba(36,26,20,.12)}
+  .sb:last-child{border-right:0}
+  .sb b{display:block;font-family:var(--disp);font-weight:900;font-size:28px;
+    line-height:1;letter-spacing:-.03em;color:var(--scarlet)}
+  .sb span{display:block;font-family:var(--disp);font-weight:700;font-size:9.5px;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--bark-soft);margin-top:7px}
+
+  /* ── Pick sheet ──────────────────────────────────────────── */
+  .sheet{--cut:var(--cut-md)}
+  .sheet>.edge{background:rgba(255,255,255,.65)}
+  .sheet>.edge>.face{background:var(--cream);color:var(--bark)}
+  .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:separate;border-spacing:0;width:100%}
+  th,td{padding:0;text-align:center;white-space:nowrap}
+  thead th{position:sticky;top:0;z-index:2;
+    background:linear-gradient(180deg,#fff,var(--cream-2));
+    padding:10px 5px 8px;border-bottom:2px solid rgba(36,26,20,.2);vertical-align:bottom}
+  thead th .sc{display:block;font-family:var(--disp);font-weight:800;font-size:9px;
+    letter-spacing:0;margin-top:4px}
+  .sc.w{color:var(--good)}.sc.l{color:var(--scarlet)}.sc.tbd{color:var(--bark-soft)}
+  tbody td{padding:5px 6px;border-bottom:1px solid rgba(36,26,20,.07)}
+  tbody tr:last-child td{border-bottom:0}
+
+  .tm{position:relative;display:inline-flex;align-items:center;justify-content:center;
+    width:27px;height:27px;overflow:hidden;vertical-align:middle;
+    clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),
+                      calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);
+    background:var(--c,#666);color:var(--tc,#fff);
+    font-family:var(--disp);font-size:8px;font-weight:900;letter-spacing:.01em}
+  .tm img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+    background:var(--c,#666);padding:2px}
+  thead th .tm{width:30px;height:30px}
+  td.miss .tm{filter:grayscale(1);opacity:.4}
+  td.pending{background:rgba(36,26,20,.05)}
+  td.pending .tm{opacity:.55}
+  thead th.pending{background:linear-gradient(180deg,var(--cream-2),#E4D9C4)}
+
+  .who-col{position:sticky;left:0;z-index:3;background:var(--cream);
+    text-align:left;padding:5px 12px !important;box-shadow:1px 0 0 rgba(36,26,20,.14)}
+  thead .who-col{background:linear-gradient(180deg,#fff,var(--cream-2))}
+  .who{display:flex;align-items:center;gap:9px}
+  .who .disc{width:29px;height:29px;font-size:11px;box-shadow:none}
+  .who .n{font-family:var(--disp);font-weight:800;font-size:14px;line-height:1.1;
+    letter-spacing:-.015em;max-width:132px;overflow:hidden;text-overflow:ellipsis}
+  .who .c{margin-left:auto;font-family:var(--disp);font-weight:900;font-size:12.5px;
+    color:var(--scarlet);padding-left:10px}
+  .who-col .n-short{display:none}
+  tr.truth td{background:var(--cream);border-bottom:2px solid rgba(36,26,20,.22)}
+  tr.truth .who .n{color:var(--scarlet);text-transform:uppercase;letter-spacing:.08em;
+    font-size:11.5px}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;padding:13px 14px;
+    background:var(--cream-2);font-family:var(--disp);font-size:10.5px;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;color:var(--bark-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend .tm{width:21px;height:21px;font-size:7px}
+  .legend .tm.off{filter:grayscale(1);opacity:.4}
+
+  .note{--cut:var(--cut-md)}
+  .note>.edge{background:rgba(255,255,255,.6)}
+  .note>.edge>.face{background:var(--cream);color:var(--bark);padding:20px 22px;
+    border-left:6px solid var(--scarlet)}
+  .note b{font-family:var(--disp);font-weight:900;font-size:19px;text-transform:uppercase;
+    letter-spacing:-.01em;display:block;margin-bottom:5px}
+  .note code{font-family:ui-monospace,monospace;font-size:12.5px;
+    background:var(--cream-2);padding:2px 5px}
+
+  footer{margin-top:44px;padding-top:16px;
+    border-top:2px solid;border-image:repeating-linear-gradient(90deg,
+      rgba(255,255,255,.4) 0 8px, transparent 8px 13px) 2;
+    font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.13em;
+    text-transform:uppercase;color:rgba(255,255,255,.62);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+  :focus-visible{outline:3px solid var(--chalk);outline-offset:3px}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+  @media (max-width:620px){
+    .panel>.edge>.face{padding:6px 8px 26px}
+    .podium{gap:5px;padding-top:22px}
+    .pod{width:106px}
+    .pod.first{margin-bottom:8px}
+    .pname{font-size:14px}
+    .pod.first .pname{font-size:16px}
+    .pstat{font-size:10.5px}
+    .ptb{font-size:9.5px;line-height:1.3}
+    .rest{grid-template-columns:repeat(3,1fr);gap:26px 8px}
+    .chips{gap:4px}
+    .chip,.mv{font-size:9.5px;padding:3px 8px 2px}
+    .chart-ctrl{margin-left:0}
+    .split-row{font-size:10.5px}
+    .runners{gap:20px}
+    .card{width:120px}
+    .crest>.edge>.face{padding:30px 14px}
+    .crest .face::before,.crest .face::after{width:46px}
+    .who-col{padding:5px 10px !important}
+    .who .n-full{display:none}
+    .who-col .n-short{display:block}
+    .who .n{max-width:88px;font-size:13px}
+    .who .disc{display:none}
+    .sb{flex:1 1 50%}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="plate crest">
+      <div class="edge"><div class="face">
+        <span class="rivets l"><i></i><i></i></span>
+        <span class="rivets r"><i></i><i></i></span>
+        <h1>Husker Season<br>Prediction Pool</h1>
+      </div></div>
+    </div>
+    <div class="plate ribbon">
+      <div class="edge"><div class="face">
+        <span id="ribbon">Season</span>
+      </div></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="plate note" style="margin-top:44px"><div class="edge"><div class="face">
+      <b>Loading</b>Pulling the latest standings.
+    </div></div></div>
+  </main>
+
+  <footer>
+    <span id="updated"></span>
+    <span>Scores collected automatically after each game</span>
+  </footer>
+</div>
+
+<script>window.DEMO_DATA = {"generatedAt":"2025-12-21T06:00:00+00:00","season":2025,"seasonComplete":true,"teamLogo":"https://a.espncdn.com/i/teamlogos/ncaa/500/158.png","teamAbbr":"NEB","teamColor":"#E41C38","record":{"wins":7,"losses":6,"played":13,"scheduled":13,"pointsSoFar":373},"aliveCount":15,"nextGame":null,"history":[{"played":1,"column":"Cincinatti","abbr":"CIN","result":"W","ranks":{"Adam Werner":{"rank":1,"position":1,"correct":1},"AJ Rerucha":{"rank":1,"position":2,"correct":1},"Bailey Rasmussen":{"rank":1,"position":3,"correct":1},"Beth Houpt":{"rank":1,"position":4,"correct":1},"Callie Knudson":{"rank":1,"position":5,"correct":1},"Chris Daley":{"rank":1,"position":6,"correct":1},"Dan Sullivan":{"rank":1,"position":7,"correct":1},"Joe Toth":{"rank":1,"position":8,"correct":1},"Karen Knudson":{"rank":1,"position":9,"correct":1},"Katie Rerucha":{"rank":1,"position":10,"correct":1},"Kevin Knudson":{"rank":1,"position":11,"correct":1},"Ross Rasmussen":{"rank":1,"position":12,"correct":1},"Steve Warner":{"rank":1,"position":13,"correct":1},"Zac Gillman":{"rank":1,"position":14,"correct":1},"Zach Stull":{"rank":1,"position":15,"correct":1}}},{"played":2,"column":"Akron","abbr":"AKR","result":"W","ranks":{"Adam Werner":{"rank":1,"position":1,"correct":2},"AJ Rerucha":{"rank":1,"position":2,"correct":2},"Bailey Rasmussen":{"rank":1,"position":3,"correct":2},"Beth Houpt":{"rank":1,"position":4,"correct":2},"Callie Knudson":{"rank":1,"position":5,"correct":2},"Chris Daley":{"rank":1,"position":6,"correct":2},"Dan Sullivan":{"rank":1,"position":7,"correct":2},"Joe Toth":{"rank":1,"position":8,"correct":2},"Karen Knudson":{"rank":1,"position":9,"correct":2},"Katie Rerucha":{"rank":1,"position":10,"correct":2},"Kevin Knudson":{"rank":1,"position":11,"correct":2},"Ross Rasmussen":{"rank":1,"position":12,"correct":2},"Steve Warner":{"rank":1,"position":13,"correct":2},"Zac Gillman":{"rank":1,"position":14,"correct":2},"Zach Stull":{"rank":1,"position":15,"correct":2}}},{"played":3,"column":"HCU","abbr":"HCU","result":"W","ranks":{"Adam Werner":{"rank":1,"position":1,"correct":3},"AJ Rerucha":{"rank":1,"position":2,"correct":3},"Bailey Rasmussen":{"rank":1,"position":3,"correct":3},"Beth Houpt":{"rank":1,"position":4,"correct":3},"Callie Knudson":{"rank":1,"position":5,"correct":3},"Chris Daley":{"rank":1,"position":6,"correct":3},"Dan Sullivan":{"rank":1,"position":7,"correct":3},"Joe Toth":{"rank":1,"position":8,"correct":3},"Karen Knudson":{"rank":1,"position":9,"correct":3},"Katie Rerucha":{"rank":1,"position":10,"correct":3},"Kevin Knudson":{"rank":1,"position":11,"correct":3},"Ross Rasmussen":{"rank":1,"position":12,"correct":3},"Steve Warner":{"rank":1,"position":13,"correct":3},"Zac Gillman":{"rank":1,"position":14,"correct":3},"Zach Stull":{"rank":1,"position":15,"correct":3}}},{"played":4,"column":"Michigan","abbr":"MICH","result":"L","ranks":{"Adam Werner":{"rank":1,"position":1,"correct":4},"Bailey Rasmussen":{"rank":1,"position":2,"correct":4},"Beth Houpt":{"rank":1,"position":3,"correct":4},"Callie Knudson":{"rank":1,"position":4,"correct":4},"Chris Daley":{"rank":1,"position":5,"correct":4},"Dan Sullivan":{"rank":1,"position":6,"correct":4},"Karen Knudson":{"rank":1,"position":7,"correct":4},"Kevin Knudson":{"rank":1,"position":8,"correct":4},"Ross Rasmussen":{"rank":1,"position":9,"correct":4},"Steve Warner":{"rank":1,"position":10,"correct":4},"Zac Gillman":{"rank":1,"position":11,"correct":4},"Zach Stull":{"rank":1,"position":12,"correct":4},"AJ Rerucha":{"rank":13,"position":13,"correct":3},"Joe Toth":{"rank":13,"position":14,"correct":3},"Katie Rerucha":{"rank":13,"position":15,"correct":3}}},{"played":5,"column":"Mich State","abbr":"MSU","result":"W","ranks":{"Adam Werner":{"rank":1,"position":1,"correct":5},"Bailey Rasmussen":{"rank":1,"position":2,"correct":5},"Beth Houpt":{"rank":1,"position":3,"correct":5},"Callie Knudson":{"rank":1,"position":4,"correct":5},"Chris Daley":{"rank":1,"position":5,"correct":5},"Dan Sullivan":{"rank":1,"position":6,"correct":5},"Karen Knudson":{"rank":1,"position":7,"correct":5},"Kevin Knudson":{"rank":1,"position":8,"correct":5},"Ross Rasmussen":{"rank":1,"position":9,"correct":5},"Steve Warner":{"rank":1,"position":10,"correct":5},"Zac Gillman":{"rank":1,"position":11,"correct":5},"Zach Stull":{"rank":1,"position":12,"correct":5},"Joe Toth":{"rank":13,"position":13,"correct":4},"Katie Rerucha":{"rank":13,"position":14,"correct":4},"AJ Rerucha":{"rank":15,"position":15,"correct":3}}},{"played":6,"column":"Maryland","abbr":"MD","result":"W","ranks":{"Adam Werner":{"rank":1,"position":1,"correct":6},"Bailey Rasmussen":{"rank":1,"position":2,"correct":6},"Beth Houpt":{"rank":1,"position":3,"correct":6},"Callie Knudson":{"rank":1,"position":4,"correct":6},"Chris Daley":{"rank":1,"position":5,"correct":6},"Dan Sullivan":{"rank":1,"position":6,"correct":6},"Karen Knudson":{"rank":1,"position":7,"correct":6},"Kevin Knudson":{"rank":1,"position":8,"correct":6},"Ross Rasmussen":{"rank":1,"position":9,"correct":6},"Steve Warner":{"rank":1,"position":10,"correct":6},"Zac Gillman":{"rank":1,"position":11,"correct":6},"Zach Stull":{"rank":1,"position":12,"correct":6},"Joe Toth":{"rank":13,"position":13,"correct":5},"Katie Rerucha":{"rank":13,"position":14,"correct":5},"AJ Rerucha":{"rank":15,"position":15,"correct":3}}},{"played":7,"column":"Minnesota","abbr":"MINN","result":"L","ranks":{"Dan Sullivan":{"rank":1,"position":1,"correct":7},"Adam Werner":{"rank":2,"position":2,"correct":6},"Bailey Rasmussen":{"rank":2,"position":3,"correct":6},"Beth Houpt":{"rank":2,"position":4,"correct":6},"Callie Knudson":{"rank":2,"position":5,"correct":6},"Chris Daley":{"rank":2,"position":6,"correct":6},"Karen Knudson":{"rank":2,"position":7,"correct":6},"Kevin Knudson":{"rank":2,"position":8,"correct":6},"Ross Rasmussen":{"rank":2,"position":9,"correct":6},"Steve Warner":{"rank":2,"position":10,"correct":6},"Zac Gillman":{"rank":2,"position":11,"correct":6},"Zach Stull":{"rank":2,"position":12,"correct":6},"Joe Toth":{"rank":13,"position":13,"correct":5},"Katie Rerucha":{"rank":13,"position":14,"correct":5},"AJ Rerucha":{"rank":15,"position":15,"correct":3}}},{"played":8,"column":"Northwestern","abbr":"NW","result":"W","ranks":{"Dan Sullivan":{"rank":1,"position":1,"correct":8},"Adam Werner":{"rank":2,"position":2,"correct":7},"Bailey Rasmussen":{"rank":2,"position":3,"correct":7},"Beth Houpt":{"rank":2,"position":4,"correct":7},"Callie Knudson":{"rank":2,"position":5,"correct":7},"Chris Daley":{"rank":2,"position":6,"correct":7},"Karen Knudson":{"rank":2,"position":7,"correct":7},"Kevin Knudson":{"rank":2,"position":8,"correct":7},"Ross Rasmussen":{"rank":2,"position":9,"correct":7},"Steve Warner":{"rank":2,"position":10,"correct":7},"Zac Gillman":{"rank":2,"position":11,"correct":7},"Zach Stull":{"rank":2,"position":12,"correct":7},"Joe Toth":{"rank":13,"position":13,"correct":6},"Katie Rerucha":{"rank":13,"position":14,"correct":6},"AJ Rerucha":{"rank":15,"position":15,"correct":4}}},{"played":9,"column":"USC","abbr":"USC","result":"L","ranks":{"Dan Sullivan":{"rank":1,"position":1,"correct":9},"Bailey Rasmussen":{"rank":2,"position":2,"correct":8},"Beth Houpt":{"rank":2,"position":3,"correct":8},"Zach Stull":{"rank":2,"position":4,"correct":8},"Adam Werner":{"rank":5,"position":5,"correct":7},"Callie Knudson":{"rank":5,"position":6,"correct":7},"Chris Daley":{"rank":5,"position":7,"correct":7},"Karen Knudson":{"rank":5,"position":8,"correct":7},"Kevin Knudson":{"rank":5,"position":9,"correct":7},"Ross Rasmussen":{"rank":5,"position":10,"correct":7},"Steve Warner":{"rank":5,"position":11,"correct":7},"Zac Gillman":{"rank":5,"position":12,"correct":7},"Joe Toth":{"rank":13,"position":13,"correct":6},"Katie Rerucha":{"rank":13,"position":14,"correct":6},"AJ Rerucha":{"rank":15,"position":15,"correct":4}}},{"played":10,"column":"UCLA","abbr":"UCLA","result":"W","ranks":{"Dan Sullivan":{"rank":1,"position":1,"correct":10},"Bailey Rasmussen":{"rank":2,"position":2,"correct":9},"Beth Houpt":{"rank":2,"position":3,"correct":9},"Zach Stull":{"rank":2,"position":4,"correct":9},"Adam Werner":{"rank":5,"position":5,"correct":8},"Callie Knudson":{"rank":5,"position":6,"correct":8},"Chris Daley":{"rank":5,"position":7,"correct":8},"Karen Knudson":{"rank":5,"position":8,"correct":8},"Kevin Knudson":{"rank":5,"position":9,"correct":8},"Ross Rasmussen":{"rank":5,"position":10,"correct":8},"Steve Warner":{"rank":5,"position":11,"correct":8},"Zac Gillman":{"rank":5,"position":12,"correct":8},"Joe Toth":{"rank":13,"position":13,"correct":7},"Katie Rerucha":{"rank":13,"position":14,"correct":7},"AJ Rerucha":{"rank":15,"position":15,"correct":5}}},{"played":11,"column":"Penn State","abbr":"PSU","result":"L","ranks":{"Dan Sullivan":{"rank":1,"position":1,"correct":11},"Bailey Rasmussen":{"rank":2,"position":2,"correct":10},"Beth Houpt":{"rank":2,"position":3,"correct":10},"Zach Stull":{"rank":2,"position":4,"correct":10},"Adam Werner":{"rank":5,"position":5,"correct":9},"Callie Knudson":{"rank":5,"position":6,"correct":9},"Chris Daley":{"rank":5,"position":7,"correct":9},"Karen Knudson":{"rank":5,"position":8,"correct":9},"Kevin Knudson":{"rank":5,"position":9,"correct":9},"Ross Rasmussen":{"rank":5,"position":10,"correct":9},"Steve Warner":{"rank":5,"position":11,"correct":9},"Zac Gillman":{"rank":5,"position":12,"correct":9},"Joe Toth":{"rank":13,"position":13,"correct":8},"Katie Rerucha":{"rank":14,"position":14,"correct":7},"AJ Rerucha":{"rank":15,"position":15,"correct":5}}},{"played":12,"column":"Iowa","abbr":"IOWA","result":"L","ranks":{"Dan Sullivan":{"rank":1,"position":1,"correct":12},"Bailey Rasmussen":{"rank":2,"position":2,"correct":11},"Beth Houpt":{"rank":2,"position":3,"correct":11},"Zach Stull":{"rank":2,"position":4,"correct":11},"Adam Werner":{"rank":5,"position":5,"correct":10},"Ross Rasmussen":{"rank":5,"position":6,"correct":10},"Zac Gillman":{"rank":5,"position":7,"correct":10},"Callie Knudson":{"rank":8,"position":8,"correct":9},"Chris Daley":{"rank":8,"position":9,"correct":9},"Karen Knudson":{"rank":8,"position":10,"correct":9},"Kevin Knudson":{"rank":8,"position":11,"correct":9},"Steve Warner":{"rank":8,"position":12,"correct":9},"Joe Toth":{"rank":13,"position":13,"correct":8},"Katie Rerucha":{"rank":14,"position":14,"correct":7},"AJ Rerucha":{"rank":15,"position":15,"correct":5}}},{"played":13,"column":"Bowl Game","abbr":"UTAH","result":"L","ranks":{"Beth Houpt":{"rank":1,"position":1,"correct":12},"Dan Sullivan":{"rank":1,"position":2,"correct":12},"Bailey Rasmussen":{"rank":3,"position":3,"correct":11},"Zach Stull":{"rank":3,"position":4,"correct":11},"Adam Werner":{"rank":5,"position":5,"correct":10},"Ross Rasmussen":{"rank":5,"position":6,"correct":10},"Zac Gillman":{"rank":5,"position":7,"correct":10},"Callie Knudson":{"rank":8,"position":8,"correct":9},"Chris Daley":{"rank":8,"position":9,"correct":9},"Karen Knudson":{"rank":8,"position":10,"correct":9},"Kevin Knudson":{"rank":8,"position":11,"correct":9},"Steve Warner":{"rank":8,"position":12,"correct":9},"Joe Toth":{"rank":13,"position":13,"correct":8},"Katie Rerucha":{"rank":13,"position":14,"correct":8},"AJ Rerucha":{"rank":15,"position":15,"correct":5}}}],"games":[{"column":"Cincinatti","opponent":"Cincinnati","kickoff":"2025-08-29T00:00Z","site":"neutral","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png","abbr":"CIN","color":"#E00122","state":"official","result":"W","nebraskaPoints":20,"opponentPoints":17,"note":null},{"column":"Akron","opponent":"Akron","kickoff":"2025-09-06T23:30Z","site":"home","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/2006.png","abbr":"AKR","color":"#041E42","state":"official","result":"W","nebraskaPoints":68,"opponentPoints":0,"note":null},{"column":"HCU","opponent":"Houston Christian","kickoff":"2025-09-13T16:00Z","site":"home","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/2277.png","abbr":"HCU","color":"#20366B","state":"official","result":"W","nebraskaPoints":59,"opponentPoints":7,"note":null},{"column":"Michigan","opponent":"Michigan","kickoff":"2025-09-20T23:30Z","site":"home","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/130.png","abbr":"MICH","color":"#00274C","state":"official","result":"L","nebraskaPoints":27,"opponentPoints":30,"note":null},{"column":"Mich State","opponent":"Michigan State","kickoff":"2025-10-04T16:00Z","site":"home","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/127.png","abbr":"MSU","color":"#18453B","state":"official","result":"W","nebraskaPoints":38,"opponentPoints":27,"note":null},{"column":"Maryland","opponent":"Maryland","kickoff":"2025-10-11T16:00Z","site":"away","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/120.png","abbr":"MD","color":"#E03A3E","state":"official","result":"W","nebraskaPoints":34,"opponentPoints":31,"note":null},{"column":"Minnesota","opponent":"Minnesota","kickoff":"2025-10-18T16:00Z","site":"away","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/135.png","abbr":"MINN","color":"#7A0019","state":"official","result":"L","nebraskaPoints":6,"opponentPoints":24,"note":null},{"column":"Northwestern","opponent":"Northwestern","kickoff":"2025-10-25T18:30Z","site":"home","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/77.png","abbr":"NW","color":"#4E2A84","state":"official","result":"W","nebraskaPoints":28,"opponentPoints":21,"note":null},{"column":"USC","opponent":"USC","kickoff":"2025-11-01T23:30Z","site":"home","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/30.png","abbr":"USC","color":"#990000","state":"official","result":"L","nebraskaPoints":17,"opponentPoints":21,"note":null},{"column":"UCLA","opponent":"UCLA","kickoff":"2025-11-09T01:00Z","site":"away","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/26.png","abbr":"UCLA","color":"#2D68C4","state":"official","result":"W","nebraskaPoints":28,"opponentPoints":21,"note":null},{"column":"Penn State","opponent":"Penn State","kickoff":"2025-11-23T00:00Z","site":"away","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/213.png","abbr":"PSU","color":"#041E42","state":"official","result":"L","nebraskaPoints":10,"opponentPoints":37,"note":null},{"column":"Iowa","opponent":"Iowa","kickoff":"2025-11-28T17:00Z","site":"home","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png","abbr":"IOWA","color":"#FFCD00","state":"official","result":"L","nebraskaPoints":16,"opponentPoints":40,"note":null},{"column":"Bowl Game","opponent":"Utah","kickoff":"2025-12-20T22:30Z","site":"neutral","logo":"https://a.espncdn.com/i/teamlogos/ncaa/500/254.png","abbr":"UTAH","color":"#CC0000","state":"official","result":"L","nebraskaPoints":22,"opponentPoints":44,"note":null}],"standings":[{"name":"Beth Houpt","correct":12,"diff":7,"guess":380,"photo":null,"rank":1,"position":1,"picks":["W","W","W","L","W","W","W","W","L","W","L","L","L"],"maxPossible":12,"movement":1,"eliminated":false},{"name":"Dan Sullivan","correct":12,"diff":45,"guess":328,"photo":null,"rank":2,"position":2,"picks":["W","W","W","L","W","W","L","W","L","W","L","L","W"],"maxPossible":12,"movement":-1,"eliminated":false},{"name":"Zach Stull","correct":11,"diff":25,"guess":348,"photo":null,"rank":3,"position":3,"picks":["W","W","W","L","W","W","W","W","L","W","L","L","W"],"maxPossible":11,"movement":-1,"eliminated":false},{"name":"Bailey Rasmussen","correct":11,"diff":28,"guess":345,"photo":null,"rank":4,"position":4,"picks":["W","W","W","L","W","W","W","W","L","W","L","L","W"],"maxPossible":11,"movement":-2,"eliminated":false},{"name":"Adam Werner","correct":10,"diff":4,"guess":369,"photo":null,"rank":5,"position":5,"picks":["W","W","W","L","W","W","W","W","W","W","L","L","W"],"maxPossible":10,"movement":0,"eliminated":false},{"name":"Zac Gillman","correct":10,"diff":36,"guess":337,"photo":null,"rank":6,"position":6,"picks":["W","W","W","L","W","W","W","W","W","W","L","L","W"],"maxPossible":10,"movement":-1,"eliminated":false},{"name":"Ross Rasmussen","correct":10,"diff":47,"guess":420,"photo":null,"rank":7,"position":7,"picks":["W","W","W","L","W","W","W","W","W","W","L","L","W"],"maxPossible":10,"movement":-2,"eliminated":false},{"name":"Karen Knudson","correct":9,"diff":24,"guess":397,"photo":null,"rank":8,"position":8,"picks":["W","W","W","L","W","W","W","W","W","W","L","W","W"],"maxPossible":9,"movement":0,"eliminated":false},{"name":"Kevin Knudson","correct":9,"diff":25,"guess":398,"photo":null,"rank":9,"position":9,"picks":["W","W","W","L","W","W","W","W","W","W","L","W","W"],"maxPossible":9,"movement":-1,"eliminated":false},{"name":"Callie Knudson","correct":9,"diff":39,"guess":412,"photo":null,"rank":10,"position":10,"picks":["W","W","W","L","W","W","W","W","W","W","L","W","W"],"maxPossible":9,"movement":-2,"eliminated":false},{"name":"Steve Warner","correct":9,"diff":39,"guess":334,"photo":null,"rank":10,"position":11,"picks":["W","W","W","L","W","W","W","W","W","W","L","W","W"],"maxPossible":9,"movement":-2,"eliminated":false},{"name":"Chris Daley","correct":9,"diff":57,"guess":316,"photo":null,"rank":12,"position":12,"picks":["W","W","W","L","W","W","W","W","W","W","L","W","W"],"maxPossible":9,"movement":-4,"eliminated":false},{"name":"Joe Toth","correct":8,"diff":8,"guess":365,"photo":null,"rank":13,"position":13,"picks":["W","W","W","W","W","W","W","W","W","W","L","W","W"],"maxPossible":8,"movement":0,"eliminated":false},{"name":"Katie Rerucha","correct":8,"diff":63,"guess":310,"photo":null,"rank":14,"position":14,"picks":["W","W","W","W","W","W","W","W","W","W","W","W","L"],"maxPossible":8,"movement":0,"eliminated":false},{"name":"AJ Rerucha","correct":5,"diff":71,"guess":444,"photo":null,"rank":15,"position":15,"picks":["W","W","W","W","L","L","W","W","W","W","W","W","W"],"maxPossible":5,"movement":0,"eliminated":false}]};</script>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const initials = n => n.trim().split(/\s+/).map(w => w[0]).slice(0,2).join("").toUpperCase();
+const shortName = n => {
+  const w = n.trim().split(/\s+/);
+  return w.length > 1 ? `${w[0]} ${w[w.length-1][0]}.` : w[0];
+};
+const textOn = hex => {
+  const c = String(hex || "").replace("#","");
+  if (c.length !== 6) return "#fff";
+  const [r,g,b] = [0,2,4].map(i => parseInt(c.slice(i,i+2),16));
+  return (0.299*r + 0.587*g + 0.114*b) > 165 ? "#20180F" : "#fff";
+};
+const ordinal = n => {
+  const t = n % 100;
+  if (t >= 11 && t <= 13) return n + "th";
+  return n + (["th","st","nd","rd"][n % 10] || "th");
+};
+const plate = (cls, inner, style) =>
+  `<div class="plate ${cls}"${style ? ` style="${style}"` : ""}><div class="edge"><div class="face">${inner}</div></div></div>`;
+
+if (window.DEMO_DATA) render(window.DEMO_DATA);
+else fetch("data/standings.json?cb=" + Date.now())
+  .then(r => r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status)))
+  .then(render)
+  .catch(err => {
+    document.getElementById("main").innerHTML = plate("note",
+      `<b>No standings yet</b>The updater hasn't produced <code>data/standings.json</code>
+       yet. Run the <em>Update standings</em> workflow from the Actions tab to build it.
+       (${esc(err.message)})`, "margin-top:44px");
+  });
+
+function render(d){
+  const g = d.games, s = d.standings, r = d.record;
+
+  document.getElementById("ribbon").textContent = d.season;
+
+  // Photo if we have one, initials underneath as the fallback.
+  const disc = p => `<div class="disc">${initials(p.name)}${
+    p.photo ? `<img src="${esc(p.photo)}" alt="" onerror="this.remove()">` : ""}</div>`;
+
+  const correctLine = p => `${p.correct} correct pick${p.correct === 1 ? "" : "s"}`;
+  const tbLine = p =>
+      p.diff !== null ? `Tiebreaker off by ${p.diff}`
+    : p.guess !== null ? `Called ${p.guess} points`
+    : "";
+
+  const movement = p => {
+    if (p.eliminated) return `<span class="mv out">Out</span>`;
+    if (p.movement === null || p.movement === undefined) return "";
+    if (p.movement > 0) return `<span class="mv up"><i></i>${p.movement}</span>`;
+    if (p.movement < 0) return `<span class="mv dn"><i></i>${-p.movement}</span>`;
+    return "";
+  };
+
+  const stakes = p => {
+    if (d.seasonComplete) return "";
+    if (p.eliminated) return "Can't catch the leader";
+    return p.maxPossible > p.correct ? `Can still reach ${p.maxPossible}` : "";
+  };
+
+  const entry = (p, cls, delay) => !p ? "" : `
+    <div class="${cls}${p.eliminated ? " out" : ""}" style="animation-delay:${delay}ms">
+      ${disc(p)}
+      <div class="chips"><span class="chip">${ordinal(p.rank)}</span>${movement(p)}</div>
+      <div class="pname">${esc(p.name)}</div>
+      <div class="pstat">${correctLine(p)}</div>
+      <div class="ptb">${esc(stakes(p) || tbLine(p))}</div>
+    </div>`;
+
+  const podium = `<div class="podium">
+      ${entry(s[1], "pod second", 100)}
+      ${entry(s[0], "pod first", 0)}
+      ${entry(s[2], "pod third", 160)}
+    </div>`;
+
+  const runners = s.length > 3
+    ? `<div class="runners">${entry(s[3], "card", 220)}${entry(s[4], "card", 260)}</div>` : "";
+
+  const rest = s.slice(5);
+  const restBlock = rest.length ? `
+    <div class="more-wrap">
+      <button class="more" id="moreBtn" aria-expanded="false" aria-controls="rest">Show more</button>
+    </div>
+    <div class="rest" id="rest" hidden>
+      ${rest.map((p, i) => entry(p, "card", Math.min(i * 30, 300))).join("")}
+    </div>` : "";
+
+  const mark = t => `<span class="tm" style="--c:${esc(t.color || "#666")};--tc:${
+      textOn(t.color)}" title="${esc(t.name || t.abbr || "")}">${esc(t.abbr || "")}${
+      t.logo ? `<img src="${esc(t.logo)}" alt="" loading="lazy" onerror="this.remove()">` : ""}</span>`;
+
+  const NEB = {abbr: d.teamAbbr || "NEB", color: d.teamColor || "#D8102F",
+               logo: d.teamLogo, name: "Nebraska"};
+  const opp = game => ({abbr: game.abbr || game.column.slice(0,4).toUpperCase(),
+                        color: game.color || "#7A6857", logo: game.logo,
+                        name: game.opponent || game.column});
+  const picked = (game, pick) => pick === "W" ? NEB : opp(game);
+
+
+  const when = iso => iso
+    ? new Date(iso).toLocaleDateString([], {month:"short", day:"numeric"})
+    : "Date TBD";
+
+  const nx = d.nextGame;
+  const nextCell = nx
+    ? `<div class="sb next">
+         <div class="nx">${mark(opp(nx))}<b>${nx.site === "away" ? "at" : "vs"} ${
+           esc(nx.opponent)}</b></div>
+         <span>${esc(when(nx.kickoff))}</span></div>`
+    : `<div class="sb next"><b>&mdash;</b><span>Season complete</span></div>`;
+
+  const split = nx ? (() => {
+    const t = Math.max(1, nx.split.nebraska + nx.split.opponent);
+    const pct = n => (n / t * 100).toFixed(1) + "%";
+    return `<div class="split">
+      <div class="split-row">
+        <span>${mark(NEB)}<b>${nx.split.nebraska}</b> picked Nebraska</span>
+        <span><b>${nx.split.opponent}</b> picked ${esc(nx.abbr || nx.opponent)}${mark(opp(nx))}</span>
+      </div>
+      <div class="bar">
+        <i style="width:${pct(nx.split.nebraska)};--c:var(--scarlet)"></i>
+        <i style="width:${pct(nx.split.opponent)};--c:${esc(nx.color || "#7A6857")}"></i>
+      </div></div>`;
+  })() : "";
+
+  const scoreboard = plate("scoreboard", `
+    <div style="display:flex;flex-wrap:wrap">
+      <div class="sb"><b>${r.wins}&#8211;${r.losses}</b><span>Record</span></div>
+      <div class="sb"><b>${r.pointsSoFar}</b><span>Total points</span></div>
+      ${nextCell}
+    </div>${split}`);
+
+  // ── pick chart: each cell is the team they picked to win ──
+  const cellState = (game, pick) => {
+    if (game.state !== "official" || !pick) return "pending";
+    return pick === game.result ? "hit" : "miss";
+  };
+  const head = `<tr>
+    <th class="who-col"><div class="who"><span class="n">Player</span></div></th>
+    ${g.map(x => `<th class="${x.state === "official" ? "" : "pending"}">${mark(opp(x))}
+      <span class="sc ${x.state === "official" ? (x.result === "W" ? "w" : "l") : "tbd"}">${
+        x.state === "official" ? `${x.result}\u2009${x.nebraskaPoints}\u2013${x.opponentPoints}`
+                               : esc(when(x.kickoff))}</span></th>`).join("")}
+  </tr>`;
+
+  const truth = `<tr class="truth">
+    <td class="who-col"><div class="who">${mark(NEB)}<span class="n">Result</span></div></td>
+    ${g.map(x => `<td class="${x.state === "official" ? "" : "pending"}">${
+      x.state === "official" ? mark(picked(x, x.result)) : "&middot;"}</td>`).join("")}
+  </tr>`;
+
+  const body = s.map(p => `<tr>
+    <td class="who-col"><div class="who">
+      ${disc(p)}
+      <span class="n n-full">${esc(p.name)}</span>
+      <span class="n n-short">${esc(shortName(p.name))}</span>
+      <span class="c">${p.correct}</span></div></td>
+    ${g.map((game, j) => {
+      const pick = p.picks[j];
+      return `<td class="${cellState(game, pick)}">${
+        pick ? mark(picked(game, pick)) : "&middot;"}</td>`;
+    }).join("")}
+  </tr>`).join("");
+
+  const sheet = plate("sheet", `
+    <div class="scroller"><table><thead>${head}</thead><tbody>${truth}${body}</tbody></table></div>
+    <div class="legend">
+      <span>${mark(NEB)}Correct pick</span>
+      <span><span class="tm off" style="--c:${esc(NEB.color)};--tc:#fff">${
+        esc(NEB.abbr)}</span>Incorrect pick</span>
+      <span>Each mark is the team they picked to win</span>
+    </div>`);
+
+
+  // ── week-by-week bump chart ──────────────────────────────────────────────
+  function buildChart(){
+    const H = d.history || [];
+    if (H.length < 2) return "";
+
+    const n = s.length, weeks = H.length;
+    const padL = 34, padT = 30, padB = 20, padR = 30, colW = 56, rowH = 26;
+    const W = padL + (weeks - 1) * colW + padR;
+    const Ht = padT + (n - 1) * rowH + padB;
+    const x = k => padL + (k - 1) * colW;
+    const y = pos => padT + (pos - 1) * rowH;
+    const at = (name, k) => (H[k - 1].ranks[name] || {}).position || n;
+
+    const grid = H.map((h, i) =>
+      `<line class="gl" x1="${x(i+1)}" y1="${padT - 8}" x2="${x(i+1)}" y2="${Ht - padB + 8}"/>`
+    ).join("");
+
+    const cols = H.map((h, i) =>
+      `<text class="lab ${h.result === "W" ? "w" : "l"}" x="${x(i+1)}" y="${padT - 15}">${
+        esc(h.abbr)}</text>`).join("");
+
+    const rows = s.map((p, i) =>
+      `<text class="rowno" x="${padL - 16}" y="${y(i+1) + 3.5}">${i + 1}</text>`).join("");
+
+    const tier = p => p.position === 1 ? "t1" : p.position <= 3 ? "t3"
+                    : p.position <= 5 ? "t5" : "";
+    const lines = s.map(p =>
+      `<path class="ln ${tier(p)}" data-name="${esc(p.name)}" d=""/>`).join("");
+
+    const pins = s.map((p, i) =>
+      `<div class="cdisc${p.rank === 1 ? " lead" : ""}" data-name="${esc(p.name)}"
+            style="z-index:${n - i}">${initials(p.name)}${
+        p.photo ? `<img src="${esc(p.photo)}" alt="" onerror="this.remove()">` : ""}</div>`
+    ).join("");
+
+    return plate("chart", `
+      <div class="chart-head">
+        <div class="chart-when">Standings after <b id="whenLabel"></b></div>
+        <div class="chart-ctrl">
+          <button class="play" id="playBtn" type="button">Play season</button>
+          <input type="range" id="scrub" min="1" max="${weeks}" value="${weeks}"
+                 aria-label="Game number">
+        </div>
+      </div>
+      <div class="chart-scroll" id="chartScroll">
+        <div class="chart-body" style="width:${W}px;height:${Ht}px">
+          <svg width="${W}" height="${Ht}" viewBox="0 0 ${W} ${Ht}">
+            ${grid}${cols}${rows}${lines}
+          </svg>
+          ${pins}
+        </div>
+      </div>
+      <p class="chart-note">Each line is one person's rank through the season. Drag the
+      slider or press play to watch the pool shuffle.</p>`);
+  }
+
+  function wireChart(){
+    const H = d.history || [];
+    if (H.length < 2) return;
+    const n = s.length, weeks = H.length;
+    const padL = 34, padT = 30, colW = 56, rowH = 26;
+    const x = k => padL + (k - 1) * colW;
+    const y = pos => padT + (pos - 1) * rowH;
+    const at = (name, k) => (H[k - 1].ranks[name] || {}).position || n;
+
+    const paths = [...document.querySelectorAll(".ln")];
+    const pins  = [...document.querySelectorAll(".cdisc")];
+    const label = document.getElementById("whenLabel");
+    const scrub = document.getElementById("scrub");
+    const play  = document.getElementById("playBtn");
+    let timer = null;
+
+    const draw = k => {
+      paths.forEach(el => {
+        const name = el.dataset.name;
+        el.setAttribute("d", Array.from({length: k}, (_, i) =>
+          `${i ? "L" : "M"}${x(i+1)} ${y(at(name, i+1))}`).join(" "));
+      });
+      pins.forEach(el => {
+        const pos = at(el.dataset.name, k);
+        el.style.left = (x(k) - 11) + "px";
+        el.style.top  = (y(pos) - 11) + "px";
+      });
+      const h = H[k - 1];
+      label.textContent = `Game ${k} \u00B7 ${h.abbr}`;
+    };
+
+    const stop = () => { clearInterval(timer); timer = null; play.textContent = "Play season"; };
+
+    scrub.addEventListener("input", () => { stop(); draw(+scrub.value); });
+    play.addEventListener("click", () => {
+      if (timer) return stop();
+      play.textContent = "Pause";
+      let k = +scrub.value >= weeks ? 1 : +scrub.value;
+      scrub.value = k; draw(k);
+      timer = setInterval(() => {
+        if (k >= weeks) return stop();
+        scrub.value = ++k; draw(k);
+      }, 750);
+    });
+
+    draw(weeks);
+    const box = document.getElementById("chartScroll");
+    if (box) box.scrollLeft = box.scrollWidth;
+  }
+
+  const h2 = t => `<h2><span class="tick"></span>${t}</h2>`;
+
+  const preseason = r.played === 0;
+  const aliveBar = (!preseason && !d.seasonComplete)
+    ? `<div class="alive"><b>${d.aliveCount}</b>&nbsp;of ${s.length} can still win</div>` : "";
+
+  const leaderboard = preseason
+    ? plate("panel", `<div class="preseason">${s.length
+        ? "Picks are locked \u2014 standings open after the first game."
+        : "No entries yet."}</div>
+        <div class="rest" style="margin-top:${s.length ? 22 : 0}px">${
+          s.map((p, i) => `<div class="card" style="animation-delay:${Math.min(i*30,300)}ms">
+            ${disc(p)}<div class="pname">${esc(p.name)}</div>
+            <div class="ptb">${esc(tbLine(p))}</div></div>`).join("")}</div>`)
+    : plate("panel", aliveBar + podium + runners + restBlock);
+
+  const chart = preseason ? "" : buildChart();
+
+  document.getElementById("main").innerHTML =
+    h2(preseason ? "Who's in" : d.seasonComplete ? "Final standings" : "Leaders") +
+    leaderboard +
+    h2("Season") + scoreboard +
+    (chart ? h2("Week by week") + chart : "") +
+    h2("Every pick") + sheet;
+
+  wireChart();
+
+  const btn = document.getElementById("moreBtn");
+  if (btn) btn.addEventListener("click", () => {
+    const box = document.getElementById("rest");
+    const open = !box.hidden;
+    box.hidden = open;
+    btn.setAttribute("aria-expanded", String(!open));
+    btn.textContent = open ? "Show more" : "Show less";
+  });
+
+  document.getElementById("updated").textContent = "Checked " +
+    new Date(d.generatedAt).toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"});
+}
+</script>
+</body>
+</html>
