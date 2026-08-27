@@ -17,6 +17,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 from datetime import datetime, timezone
 
@@ -24,8 +25,19 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_PATH = os.path.join(ROOT, "config.json")
 OUT_PATH = os.path.join(ROOT, "data", "standings.json")
 
-ESPN = ("https://site.api.espn.com/apis/site/v2/sports/football/"
-        "college-football/teams/{team}/schedule?season={season}&seasontype={stype}")
+# ESPN's public JSON, reachable on two hosts. Datacentre IPs get 403'd unless
+# the request looks like a browser, so send a full header set.
+ESPN_HOSTS = ["https://site.api.espn.com", "https://site.web.api.espn.com"]
+ESPN_PATH = ("/apis/site/v2/sports/football/college-football"
+             "/teams/{team}/schedule?season={season}&seasontype={stype}")
+
+BROWSER = {
+    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                   "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"),
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.espn.com/college-football/",
+}
 
 # Columns in the response sheet that are never games.
 META_COLUMNS = {"timestamp", "email address", "email", "name", "score",
@@ -38,10 +50,18 @@ def log(msg):
     print(msg, file=sys.stderr)
 
 
-def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "husker-pool/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode("utf-8", "replace")
+def fetch(url, tries=3):
+    last = None
+    for attempt in range(tries):
+        try:
+            req = urllib.request.Request(url, headers=BROWSER)
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return r.read().decode("utf-8", "replace")
+        except Exception as err:                       # noqa: BLE001
+            last = err
+            if attempt < tries - 1:
+                time.sleep(1.5 * (attempt + 1))
+    raise last
 
 
 def to_csv_url(link):
@@ -139,19 +159,40 @@ def load_picks(cfg):
 # ── results ────────────────────────────────────────────────────────────────
 
 def load_events(cfg):
-    """Regular season (type 2) plus postseason (type 3)."""
-    events = []
+    """Regular season (type 2) plus postseason (type 3), across both hosts."""
+    events, regular_ok = [], False
+
     for stype in (2, 3):
-        url = ESPN.format(team=cfg["espnTeam"], season=cfg["season"], stype=stype)
-        try:
-            payload = json.loads(fetch(url))
-        except Exception as err:                       # noqa: BLE001
-            log(f"  ! seasontype {stype} unavailable: {err}")
+        payload, problem = None, None
+        for host in ESPN_HOSTS:
+            url = host + ESPN_PATH.format(team=cfg["espnTeam"], season=cfg["season"],
+                                          stype=stype)
+            try:
+                payload = json.loads(fetch(url))
+                log(f"  seasontype {stype}: {host.split('//')[1]}")
+                break
+            except Exception as err:                   # noqa: BLE001
+                problem = err
+
+        if payload is None:
+            log(f"  ! seasontype {stype} unavailable: {problem}")
             continue
+        if stype == 2:
+            regular_ok = True
+
         for ev in payload.get("events", []):
             parsed = parse_event(ev, cfg, postseason=(stype == 3))
             if parsed:
                 events.append(parsed)
+
+    # Never overwrite good standings with an empty season because a feed was
+    # down. Fail the run instead and leave the last good file in place.
+    if not regular_ok:
+        raise SystemExit(
+            "Couldn't reach ESPN's schedule feed on any host, so nothing was written "
+            "and the previous standings are untouched. If this keeps happening, the "
+            "overrides block in config.json can carry the season by hand."
+        )
     return events
 
 
