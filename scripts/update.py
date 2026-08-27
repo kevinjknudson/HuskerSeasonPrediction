@@ -104,11 +104,13 @@ def score_of(competitor):
 
 def load_picks(cfg):
     text = read_text(to_csv_url(cfg["picksLink"]))
-    rows = list(csv.DictReader(io.StringIO(text)))
-    if not rows:
+    reader = csv.DictReader(io.StringIO(text))
+    rows = list(reader)
+    # A header row with no responses under it is a normal preseason state,
+    # so only a missing header row counts as a broken link.
+    headers = [h.strip() for h in (reader.fieldnames or []) if h is not None]
+    if not headers:
         raise SystemExit("The picks sheet came back empty. Check that the link is shareable.")
-
-    headers = [h.strip() for h in rows[0].keys() if h is not None]
     name_col = next((h for h in headers if h.lower() == "name"), headers[0])
     tb_col = next((h for h in headers
                    if "tiebreak" in h.lower() and "point" in h.lower()), None)
