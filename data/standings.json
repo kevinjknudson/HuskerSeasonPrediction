@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T17:23:57+00:00",
+  "generatedAt": "2026-08-30T18:23:51+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 2,
+  "aliveCount": 3,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -24,7 +24,7 @@
     "split": {
       "nebraska": 0,
       "opponent": 0,
-      "none": 2
+      "none": 3
     }
   },
   "history": [],
@@ -214,13 +214,40 @@
   ],
   "standings": [
     {
+      "name": "karen knudson",
+      "correct": 0,
+      "diff": null,
+      "guess": 343,
+      "photo": null,
+      "rank": 1,
+      "position": 1,
+      "picks": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "W",
+        null,
+        null,
+        null,
+        null,
+        "L"
+      ],
+      "maxPossible": 2,
+      "movement": null,
+      "eliminated": false
+    },
+    {
       "name": "Ross Rasmussen",
       "correct": 0,
       "diff": null,
       "guess": 420,
       "photo": null,
       "rank": 1,
-      "position": 1,
+      "position": 2,
       "picks": [
         null,
         null,
@@ -247,7 +274,7 @@
       "guess": 388,
       "photo": null,
       "rank": 1,
-      "position": 2,
+      "position": 3,
       "picks": [
         null,
         null,
