@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T11:23:42+00:00",
+  "generatedAt": "2026-08-30T13:23:41+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 0,
+  "aliveCount": 1,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -24,7 +24,7 @@
     "split": {
       "nebraska": 0,
       "opponent": 0,
-      "none": 0
+      "none": 1
     }
   },
   "history": [],
@@ -212,5 +212,33 @@
       "note": "No matching game found yet"
     }
   ],
-  "standings": []
+  "standings": [
+    {
+      "name": "Ross Rasmussen",
+      "correct": 0,
+      "diff": null,
+      "guess": 420,
+      "photo": null,
+      "rank": 1,
+      "position": 1,
+      "picks": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "W",
+        null,
+        null,
+        null,
+        null,
+        "L"
+      ],
+      "maxPossible": 2,
+      "movement": null,
+      "eliminated": false
+    }
+  ]
 }
