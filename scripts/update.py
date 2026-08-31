@@ -18,6 +18,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
@@ -50,11 +51,11 @@ def log(msg):
     print(msg, file=sys.stderr)
 
 
-def fetch(url, tries=3):
+def fetch(url, tries=3, headers=None):
     last = None
     for attempt in range(tries):
         try:
-            req = urllib.request.Request(url, headers=BROWSER)
+            req = urllib.request.Request(url, headers=headers or BROWSER)
             with urllib.request.urlopen(req, timeout=30) as r:
                 return r.read().decode("utf-8", "replace")
         except Exception as err:                       # noqa: BLE001
@@ -96,13 +97,45 @@ def column_alias(col):
     return " ".join(s.split())
 
 
-def normalize_pick(v):
-    s = (v or "").strip().lower()
-    if s.startswith("w"):
+WIN_WORDS = {"w", "win", "wins", "won", "victory"}
+LOSE_WORDS = {"l", "lose", "loss", "lost", "loses"}
+
+
+def resolve_pick(raw, col, ev, us_names):
+    """Read one answer.
+
+    The form can ask either way — 'Win'/'Lose', or the name of the team you
+    think wins. Team names are checked against the actual opponent rather than
+    by first letter, because 'Washington' starts with a W and is not a win.
+    """
+    s = (raw or "").strip().lower()
+    if not s:
+        return None
+    if s in WIN_WORDS:
         return "W"
-    if s.startswith("l"):
+    if s in LOSE_WORDS:
+        return "L"
+    if s in us_names:
+        return "W"
+
+    theirs = {column_alias(col)}
+    if ev:
+        theirs.update(n for n in ev["opponentNames"] if n)
+        theirs.add((ev.get("opponentShort") or "").lower())
+        theirs.add((ev.get("abbr") or "").lower())
+    theirs.discard("")
+    if s in theirs or any(s in n or n in s for n in theirs):
         return "L"
     return None
+
+
+def us_team_names(cfg):
+    names = {str(cfg.get("cfbdTeam", "Nebraska")).lower(),
+             str(cfg.get("espnTeam", "nebraska")).lower(),
+             str(cfg.get("teamAbbr", "NEB")).lower(),
+             "nebraska", "huskers", "cornhuskers", "nebraska cornhuskers"}
+    names.discard("")
+    return names
 
 
 def to_int(v):
@@ -118,6 +151,87 @@ def score_of(competitor):
     if isinstance(s, dict):
         s = s.get("value", s.get("displayValue"))
     return to_int(s)
+
+
+# ── CollegeFootballData ────────────────────────────────────────────────────
+
+CFBD = "https://api.collegefootballdata.com"
+
+
+def field(obj, *names, default=None):
+    """CFBD has shipped both snake_case and camelCase; accept either."""
+    for n in names:
+        if isinstance(obj, dict) and obj.get(n) is not None:
+            return obj[n]
+    return default
+
+
+def cfbd_get(path, key, params):
+    url = f"{CFBD}{path}?{urllib.parse.urlencode(params)}"
+    return json.loads(fetch(url, headers={
+        "Authorization": f"Bearer {key}",
+        "Accept": "application/json",
+        "User-Agent": "husker-pool/1.0",
+    }))
+
+
+def cfbd_teams(key):
+    """school -> {logos, colour, abbreviation}. Includes FCS, so North Dakota works."""
+    out = {}
+    try:
+        for t in cfbd_get("/teams", key, {}):
+            school = field(t, "school")
+            if school:
+                out[school.lower()] = t
+    except Exception as err:                           # noqa: BLE001
+        log(f"  ! team metadata unavailable ({err}); logos may be missing")
+    return out
+
+
+def load_events_cfbd(cfg, key):
+    us = cfg.get("cfbdTeam", "Nebraska")
+    teams = cfbd_teams(key)
+    events = []
+
+    for season_type, postseason in (("regular", False), ("postseason", True)):
+        rows = cfbd_get("/games", key, {"year": cfg["season"], "team": us,
+                                        "seasonType": season_type})
+        for g in rows:
+            home = field(g, "home_team", "homeTeam", default="")
+            away = field(g, "away_team", "awayTeam", default="")
+            at_home = home.lower() == us.lower()
+            opp_name = away if at_home else home
+            if not opp_name:
+                continue
+
+            us_pts = field(g, "home_points", "homePoints") if at_home else \
+                     field(g, "away_points", "awayPoints")
+            opp_pts = field(g, "away_points", "awayPoints") if at_home else \
+                      field(g, "home_points", "homePoints")
+
+            t = teams.get(opp_name.lower(), {})
+            logos = field(t, "logos", default=[]) or []
+            mascot = field(t, "mascot", default="")
+            abbr = field(t, "abbreviation", default="") or opp_name
+
+            events.append({
+                "kickoff": field(g, "start_date", "startDate"),
+                "postseason": postseason,
+                "logo": logos[0] if logos else None,
+                "opponent": " ".join(x for x in (opp_name, mascot) if x),
+                "opponentShort": opp_name,
+                "opponentNames": [n.lower() for n in
+                                  (opp_name, f"{opp_name} {mascot}".strip(), mascot, abbr) if n],
+                "homeAway": "home" if at_home else "away",
+                "neutral": bool(field(g, "neutral_site", "neutralSite", default=False)),
+                "nebraskaPoints": to_int(us_pts),
+                "opponentPoints": to_int(opp_pts),
+                "completed": bool(field(g, "completed", default=False)),
+                "statusName": "CFBD",
+                "abbr": abbr.upper()[:4],
+                "color": "#" + str(field(t, "color", default="7A6857")).lstrip("#"),
+            })
+    return events
 
 
 # ── picks ──────────────────────────────────────────────────────────────────
@@ -143,9 +257,14 @@ def load_picks(cfg):
         name = clean.get(name_col, "")
         if not name or name.lower() == "actual":      # legacy manual-results row
             continue
+        # A name typed in all lowercase gets tidied; anything with existing
+        # capitals is left exactly as entered.
+        if name == name.lower():
+            name = name.title()
         people.append({
             "name": name,
-            "picks": {g: normalize_pick(clean.get(g)) for g in game_cols},
+            "raw": {g: clean.get(g, "") for g in game_cols},
+            "picks": {},
             "guess": to_int(clean.get(tb_col)) if tb_col else None,
         })
 
@@ -159,6 +278,23 @@ def load_picks(cfg):
 # ── results ────────────────────────────────────────────────────────────────
 
 def load_events(cfg):
+    """CollegeFootballData if a key is available, ESPN otherwise."""
+    key = os.environ.get("CFBD_API_KEY") or cfg.get("cfbdKey")
+    if key:
+        try:
+            events = load_events_cfbd(cfg, key)
+            if events:
+                log(f"  source: CollegeFootballData ({len(events)} games)")
+                return events
+            log("  ! CollegeFootballData returned no games — falling back to ESPN")
+        except Exception as err:                       # noqa: BLE001
+            log(f"  ! CollegeFootballData failed ({err}) — falling back to ESPN")
+    else:
+        log("  no CFBD_API_KEY set — using ESPN")
+    return load_events_espn(cfg)
+
+
+def load_events_espn(cfg):
     """Regular season (type 2) plus postseason (type 3), across both hosts."""
     events, regular_ok = [], False
 
@@ -221,6 +357,9 @@ def parse_event(ev, cfg, postseason):
         "abbr": (opp.get("abbreviation") or opp.get("shortDisplayName") or "")[:4].upper(),
         "color": "#" + str(opp.get("color") or "444444").lstrip("#"),
         "opponent": opp.get("displayName") or opp.get("name") or "TBD",
+        # "Ohio" rather than "Ohio Bobcats", for the next-game headline
+        "opponentShort": (opp.get("location") or opp.get("shortDisplayName")
+                          or opp.get("displayName") or "TBD"),
         "opponentNames": [str(opp.get(k, "")).lower() for k in
                           ("displayName", "shortDisplayName", "name",
                            "location", "nickname", "abbreviation")],
@@ -254,19 +393,24 @@ def assign(game_cols, events, cfg):
 
     candidates = []
     for col in game_cols:
+        is_bowl = col.lower() in bowl_cols
         for alias in aliases.get(col.lower(), [column_alias(col)]):
             if not alias:
                 continue
             for i, ev in enumerate(events):
                 names = ev["opponentNames"]
                 if alias in names:
-                    candidates.append((2, len(alias), col, i))
+                    exact = 2
                 elif any(alias in n for n in names if n):
-                    candidates.append((1, len(alias), col, i))
+                    exact = 1
+                else:
+                    continue
+                regular = 0 if (ev["postseason"] and not is_bowl) else 1
+                candidates.append((regular, exact, len(alias), col, i))
     candidates.sort(reverse=True)
 
     taken_cols, taken_events, pairs = set(), set(), {}
-    for _, _, col, i in candidates:
+    for _, _, _, col, i in candidates:
         if col in taken_cols or i in taken_events:
             continue
         taken_cols.add(col)
@@ -308,7 +452,7 @@ def settle(col, ev, cfg):
     if hours_since(ev["kickoff"]) < wait:
         return {"state": "unofficial", "result": result, "nebraskaPoints": us,
                 "opponentPoints": them,
-                "note": f"Locks in {wait:.0f} hours after kickoff"}
+                "note": f"Locks in {wait:g} hour{'' if wait == 1 else 's'} after kickoff"}
 
     return {"state": "official", "result": result, "nebraskaPoints": us,
             "opponentPoints": them, "note": None}
@@ -399,6 +543,8 @@ def compose(games, people, season, team, photos=None):
         next_game = {
             "column": upcoming["column"],
             "opponent": upcoming.get("opponent") or upcoming["column"],
+            "opponentShort": (upcoming.get("opponentShort")
+                              or upcoming.get("opponent") or upcoming["column"]),
             "abbr": upcoming.get("abbr"), "color": upcoming.get("color"),
             "logo": upcoming.get("logo"), "kickoff": upcoming.get("kickoff"),
             "site": upcoming.get("site"),
@@ -432,6 +578,15 @@ def build(cfg):
     log(f"  {len(events)} games on Nebraska's schedule")
     pairs = assign(game_cols, events, cfg)
 
+    matched = [c for c in game_cols if c in pairs]
+    log(f"  matched {len(matched)} of {len(game_cols)} sheet columns to real games")
+    for col in game_cols:
+        ev = pairs.get(col)
+        if ev:
+            log(f"    {col} -> {ev['opponent']} ({ev['kickoff'] or 'no kickoff time yet'})")
+        else:
+            log(f"  ! no match for {col!r} — searched for {column_alias(col)!r}")
+
     games = []
     for col in game_cols:
         ev = pairs.get(col)
@@ -439,6 +594,7 @@ def build(cfg):
         games.append({
             "column": col,
             "opponent": ev["opponent"] if ev else col,
+            "opponentShort": ev["opponentShort"] if ev else col,
             "kickoff": ev["kickoff"] if ev else None,
             "site": ("neutral" if ev and ev["neutral"] else
                      ev["homeAway"] if ev else None),
@@ -447,6 +603,24 @@ def build(cfg):
             "color": ev["color"] if ev else "#7A6857",
             **outcome,
         })
+
+    # Now that each column has an opponent, the answers can be read.
+    us_names = us_team_names(cfg)
+    unreadable = {}
+    for p in people:
+        for col in game_cols:
+            raw = p["raw"].get(col, "")
+            pick = resolve_pick(raw, col, pairs.get(col), us_names)
+            p["picks"][col] = pick
+            if raw and pick is None:
+                unreadable.setdefault(f"{col} = {raw!r}", 0)
+                unreadable[f"{col} = {raw!r}"] += 1
+
+    read = sum(1 for p in people for v in p["picks"].values() if v)
+    total = len(people) * len(game_cols)
+    log(f"  read {read} of {total} answers")
+    for label, n in sorted(unreadable.items(), key=lambda kv: -kv[1])[:12]:
+        log(f"  ! couldn't read {label} ({n}x)")
 
     team = {
         "teamLogo": f"https://a.espncdn.com/i/teamlogos/ncaa/500/{cfg['espnTeamId']}.png",
