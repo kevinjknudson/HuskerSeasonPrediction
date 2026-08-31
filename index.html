@@ -296,7 +296,6 @@
   thead th .tm{width:30px;height:30px}
   td.miss .tm{filter:grayscale(1);opacity:.4}
   td.pending{background:rgba(36,26,20,.05)}
-  td.pending .tm{opacity:.55}
   thead th.pending{background:linear-gradient(180deg,var(--cream-2),#E4D9C4)}
 
   .who-col{position:sticky;left:0;z-index:3;background:var(--cream);
@@ -439,7 +438,7 @@ function render(d){
   const correctLine = p => `${p.correct} correct pick${p.correct === 1 ? "" : "s"}`;
   const tbLine = p =>
       p.diff !== null ? `Tiebreaker off by ${p.diff}`
-    : p.guess !== null ? `Called ${p.guess} points`
+    : p.guess !== null ? `Tiebreaker: ${p.guess}`
     : "";
 
   const movement = p => {
@@ -462,7 +461,8 @@ function render(d){
       <div class="chips"><span class="chip">${ordinal(p.rank)}</span>${movement(p)}</div>
       <div class="pname">${esc(p.name)}</div>
       <div class="pstat">${correctLine(p)}</div>
-      <div class="ptb">${esc(stakes(p) || tbLine(p))}</div>
+      ${stakes(p) ? `<div class="ptb">${esc(stakes(p))}</div>` : ""}
+      ${tbLine(p) ? `<div class="ptb">${esc(tbLine(p))}</div>` : ""}
     </div>`;
 
   const podium = `<div class="podium">
