@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T12:23:54+00:00",
+  "generatedAt": "2026-08-31T13:23:53+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 6,
+  "aliveCount": 7,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -24,7 +24,7 @@
     "split": {
       "nebraska": 0,
       "opponent": 0,
-      "none": 6
+      "none": 7
     }
   },
   "history": [],
@@ -241,13 +241,40 @@
       "eliminated": false
     },
     {
+      "name": "Eric Spain",
+      "correct": 0,
+      "diff": null,
+      "guess": 370,
+      "photo": null,
+      "rank": 1,
+      "position": 2,
+      "picks": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "W",
+        null,
+        null,
+        null,
+        null,
+        "L"
+      ],
+      "maxPossible": 2,
+      "movement": null,
+      "eliminated": false
+    },
+    {
       "name": "Hendee-Cat",
       "correct": 0,
       "diff": null,
       "guess": 412,
       "photo": null,
       "rank": 1,
-      "position": 2,
+      "position": 3,
       "picks": [
         null,
         null,
@@ -274,7 +301,7 @@
       "guess": 343,
       "photo": null,
       "rank": 1,
-      "position": 3,
+      "position": 4,
       "picks": [
         null,
         null,
@@ -301,7 +328,7 @@
       "guess": 333,
       "photo": null,
       "rank": 1,
-      "position": 4,
+      "position": 5,
       "picks": [
         null,
         null,
@@ -328,7 +355,7 @@
       "guess": 420,
       "photo": null,
       "rank": 1,
-      "position": 5,
+      "position": 6,
       "picks": [
         null,
         null,
@@ -355,7 +382,7 @@
       "guess": 388,
       "photo": null,
       "rank": 1,
-      "position": 6,
+      "position": 7,
       "picks": [
         null,
         null,
