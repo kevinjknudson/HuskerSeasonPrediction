@@ -503,7 +503,7 @@ function render(d){
   const nextCell = nx
     ? `<div class="sb next">
          <div class="nx">${mark(opp(nx))}<b>${nx.site === "away" ? "at" : "vs"} ${
-           esc(nx.opponent)}</b></div>
+           esc(nx.opponentShort || nx.opponent)}</b></div>
          <span>${esc(when(nx.kickoff))}</span></div>`
     : `<div class="sb next"><b>&mdash;</b><span>Season complete</span></div>`;
 
