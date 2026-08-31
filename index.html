@@ -291,10 +291,10 @@
                       calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);
     background:var(--c,#666);color:var(--tc,#fff);
     font-family:var(--disp);font-size:8px;font-weight:900;letter-spacing:.01em}
-  .tm img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
-    background:var(--c,#666);padding:2px}
+  .tm img{position:absolute;inset:2px;width:calc(100% - 4px);height:calc(100% - 4px);
+    object-fit:contain;background:#fff;padding:1.5px;border-radius:3px}
   thead th .tm{width:30px;height:30px}
-  td.miss .tm{filter:grayscale(1);opacity:.4}
+  td.miss .tm{filter:grayscale(1);opacity:.45}
   td.pending{background:rgba(36,26,20,.05)}
   thead th.pending{background:linear-gradient(180deg,var(--cream-2),#E4D9C4)}
 
@@ -317,7 +317,7 @@
     letter-spacing:.05em;text-transform:uppercase;color:var(--bark-soft)}
   .legend span{display:inline-flex;align-items:center;gap:8px}
   .legend .tm{width:21px;height:21px;font-size:7px}
-  .legend .tm.off{filter:grayscale(1);opacity:.4}
+  .legend .tm.off{filter:grayscale(1);opacity:.45}
 
   .note{--cut:var(--cut-md)}
   .note>.edge{background:rgba(255,255,255,.6)}
@@ -483,8 +483,9 @@ function render(d){
       ${rest.map((p, i) => entry(p, "card", Math.min(i * 30, 300))).join("")}
     </div>` : "";
 
-  const mark = t => `<span class="tm" style="--c:${esc(t.color || "#666")};--tc:${
-      textOn(t.color)}" title="${esc(t.name || t.abbr || "")}">${esc(t.abbr || "")}${
+  const mark = (t, extra = "") => `<span class="tm ${extra}" style="--c:${
+      esc(t.color || "#666")};--tc:${textOn(t.color)}" title="${
+      esc(t.name || t.abbr || "")}">${esc(t.abbr || "")}${
       t.logo ? `<img src="${esc(t.logo)}" alt="" loading="lazy" onerror="this.remove()">` : ""}</span>`;
 
   const NEB = {abbr: d.teamAbbr || "NEB", color: d.teamColor || "#D8102F",
@@ -542,7 +543,7 @@ function render(d){
   </tr>`;
 
   const truth = `<tr class="truth">
-    <td class="who-col"><div class="who">${mark(NEB)}<span class="n">Result</span></div></td>
+    <td class="who-col"><div class="who"><span class="n">Result</span></div></td>
     ${g.map(x => `<td class="${x.state === "official" ? "" : "pending"}">${
       x.state === "official" ? mark(picked(x, x.result)) : "&middot;"}</td>`).join("")}
   </tr>`;
@@ -564,8 +565,7 @@ function render(d){
     <div class="scroller"><table><thead>${head}</thead><tbody>${truth}${body}</tbody></table></div>
     <div class="legend">
       <span>${mark(NEB)}Correct pick</span>
-      <span><span class="tm off" style="--c:${esc(NEB.color)};--tc:#fff">${
-        esc(NEB.abbr)}</span>Incorrect pick</span>
+      <span>${mark(NEB, "off")}Incorrect pick</span>
       <span>Each mark is the team they picked to win</span>
     </div>`);
 
