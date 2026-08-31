@@ -2,8 +2,8 @@ name: Update standings
 
 on:
   schedule:
-    # Hourly, August through January. Times are UTC.
-    - cron: "20 * * 8,9,10,11,12,1 *"
+    # Every 20 minutes, August through January. Times are UTC.
+    - cron: "*/20 * * 8,9,10,11,12,1 *"
   workflow_dispatch:        # adds a "Run workflow" button in the Actions tab
   push:
     paths:
@@ -27,6 +27,8 @@ jobs:
           python-version: "3.12"
 
       - name: Collect results and recalculate
+        env:
+          CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
         run: python scripts/update.py
 
       - name: Commit if anything changed
