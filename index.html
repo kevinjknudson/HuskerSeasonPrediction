@@ -170,7 +170,7 @@
 
   /* ── Next-game split ─────────────────────────────────────── */
   .sb.next{flex:1 1 40%}
-  .nx{display:flex;align-items:center;justify-content:center;gap:8px}
+  .nx{display:flex;align-items:center;justify-content:center;gap:7px}
   .nx b{font-family:var(--disp);font-weight:900;font-size:21px;letter-spacing:-.02em;
     line-height:1;color:var(--scarlet)}
   .split{border-top:1px solid rgba(36,26,20,.12);padding:13px 16px 15px;color:var(--bark)}
@@ -286,14 +286,12 @@
   tbody tr:last-child td{border-bottom:0}
 
   .tm{position:relative;display:inline-flex;align-items:center;justify-content:center;
-    width:27px;height:27px;overflow:hidden;vertical-align:middle;
-    clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),
-                      calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);
+    width:27px;height:27px;overflow:hidden;vertical-align:middle;border-radius:6px;
     background:var(--c,#666);color:var(--tc,#fff);
     font-family:var(--disp);font-size:8px;font-weight:900;letter-spacing:.01em}
   .tm img{position:absolute;inset:2px;width:calc(100% - 4px);height:calc(100% - 4px);
-    object-fit:contain;background:#fff;padding:1.5px;border-radius:3px}
-  thead th .tm{width:30px;height:30px}
+    object-fit:contain;background:#fff;padding:1.5px;border-radius:4px}
+  thead th .tm{width:30px;height:30px;border-radius:7px}
   td.miss .tm{filter:grayscale(1);opacity:.45}
   td.pending{background:rgba(36,26,20,.05)}
   thead th.pending{background:linear-gradient(180deg,var(--cream-2),#E4D9C4)}
@@ -503,7 +501,7 @@ function render(d){
   const nx = d.nextGame;
   const nextCell = nx
     ? `<div class="sb next">
-         <div class="nx">${mark(opp(nx))}<b>${nx.site === "away" ? "at" : "vs"} ${
+         <div class="nx"><b>${nx.site === "away" ? "at" : "vs"}</b>${mark(opp(nx))}<b>${
            esc(nx.opponentShort || nx.opponent)}</b></div>
          <span>${esc(when(nx.kickoff))}</span></div>`
     : `<div class="sb next"><b>&mdash;</b><span>Season complete</span></div>`;
@@ -566,7 +564,6 @@ function render(d){
     <div class="legend">
       <span>${mark(NEB)}Correct pick</span>
       <span>${mark(NEB, "off")}Incorrect pick</span>
-      <span>Each mark is the team they picked to win</span>
     </div>`);
 
 
