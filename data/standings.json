@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T10:49:22+00:00",
+  "generatedAt": "2026-09-04T11:12:57+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 12,
+  "aliveCount": 14,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -23,7 +23,7 @@
     "kickoff": "2026-09-05T16:00Z",
     "site": "home",
     "split": {
-      "nebraska": 12,
+      "nebraska": 14,
       "opponent": 0,
       "none": 0
     }
@@ -498,13 +498,40 @@
       "eliminated": false
     },
     {
+      "name": "Mitch Hong",
+      "correct": 0,
+      "diff": null,
+      "guess": 321,
+      "photo": null,
+      "rank": 1,
+      "position": 11,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "L",
+        "L",
+        "W",
+        "L",
+        "L",
+        null
+      ],
+      "maxPossible": 12,
+      "movement": null,
+      "eliminated": false
+    },
+    {
       "name": "Ross Rasmussen",
       "correct": 0,
       "diff": null,
       "guess": 420,
       "photo": null,
       "rank": 1,
-      "position": 11,
+      "position": 12,
       "picks": [
         "W",
         "W",
@@ -525,13 +552,40 @@
       "eliminated": false
     },
     {
+      "name": "Sandy",
+      "correct": 0,
+      "diff": null,
+      "guess": 250,
+      "photo": null,
+      "rank": 1,
+      "position": 13,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "L",
+        "W",
+        "W",
+        "L",
+        "L",
+        "L"
+      ],
+      "maxPossible": 13,
+      "movement": null,
+      "eliminated": false
+    },
+    {
       "name": "Steve Warner",
       "correct": 0,
       "diff": null,
       "guess": 388,
       "photo": null,
       "rank": 1,
-      "position": 12,
+      "position": 14,
       "picks": [
         "W",
         "W",
