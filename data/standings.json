@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T23:47:14+00:00",
+  "generatedAt": "2026-09-04T00:19:54+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 11,
+  "aliveCount": 12,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -23,7 +23,7 @@
     "kickoff": "2026-09-05T16:00Z",
     "site": "home",
     "split": {
-      "nebraska": 11,
+      "nebraska": 12,
       "opponent": 0,
       "none": 0
     }
@@ -471,13 +471,40 @@
       "eliminated": false
     },
     {
+      "name": "Kevin V",
+      "correct": 0,
+      "diff": null,
+      "guess": 340,
+      "photo": null,
+      "rank": 1,
+      "position": 10,
+      "picks": [
+        "W",
+        "W",
+        "L",
+        "L",
+        "W",
+        "L",
+        "L",
+        "W",
+        "L",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 13,
+      "movement": null,
+      "eliminated": false
+    },
+    {
       "name": "Ross Rasmussen",
       "correct": 0,
       "diff": null,
       "guess": 420,
       "photo": null,
       "rank": 1,
-      "position": 10,
+      "position": 11,
       "picks": [
         "W",
         "W",
@@ -504,7 +531,7 @@
       "guess": 388,
       "photo": null,
       "rank": 1,
-      "position": 11,
+      "position": 12,
       "picks": [
         "W",
         "W",
