@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T14:49:44+00:00",
+  "generatedAt": "2026-09-04T15:13:33+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 16,
+  "aliveCount": 17,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -23,7 +23,7 @@
     "kickoff": "2026-09-05T16:00Z",
     "site": "home",
     "split": {
-      "nebraska": 16,
+      "nebraska": 17,
       "opponent": 0,
       "none": 0
     }
@@ -471,13 +471,40 @@
       "eliminated": false
     },
     {
+      "name": "Jeffrey Daley",
+      "correct": 0,
+      "diff": null,
+      "guess": 452,
+      "photo": null,
+      "rank": 1,
+      "position": 10,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "L",
+        "W",
+        "L",
+        "W",
+        "L",
+        "W",
+        "L"
+      ],
+      "maxPossible": 13,
+      "movement": null,
+      "eliminated": false
+    },
+    {
       "name": "Karen Knudson",
       "correct": 0,
       "diff": null,
       "guess": 343,
       "photo": null,
       "rank": 1,
-      "position": 10,
+      "position": 11,
       "picks": [
         "W",
         "W",
@@ -504,7 +531,7 @@
       "guess": 333,
       "photo": null,
       "rank": 1,
-      "position": 11,
+      "position": 12,
       "picks": [
         "W",
         "W",
@@ -531,7 +558,7 @@
       "guess": 340,
       "photo": null,
       "rank": 1,
-      "position": 12,
+      "position": 13,
       "picks": [
         "W",
         "W",
@@ -558,7 +585,7 @@
       "guess": 321,
       "photo": null,
       "rank": 1,
-      "position": 13,
+      "position": 14,
       "picks": [
         "W",
         "W",
@@ -585,7 +612,7 @@
       "guess": 420,
       "photo": null,
       "rank": 1,
-      "position": 14,
+      "position": 15,
       "picks": [
         "W",
         "W",
@@ -612,7 +639,7 @@
       "guess": 250,
       "photo": null,
       "rank": 1,
-      "position": 15,
+      "position": 16,
       "picks": [
         "W",
         "W",
@@ -639,7 +666,7 @@
       "guess": 388,
       "photo": null,
       "rank": 1,
-      "position": 16,
+      "position": 17,
       "picks": [
         "W",
         "W",
