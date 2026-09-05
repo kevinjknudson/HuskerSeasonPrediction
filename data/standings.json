@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T11:28:50+00:00",
+  "generatedAt": "2026-09-05T11:47:15+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 21,
+  "aliveCount": 22,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -23,7 +23,7 @@
     "kickoff": "2026-09-05T16:00Z",
     "site": "home",
     "split": {
-      "nebraska": 21,
+      "nebraska": 22,
       "opponent": 0,
       "none": 0
     }
@@ -791,6 +791,33 @@
         "L"
       ],
       "maxPossible": 13,
+      "movement": null,
+      "eliminated": false
+    },
+    {
+      "name": "Zac Gillman",
+      "correct": 0,
+      "diff": null,
+      "guess": 321,
+      "photo": null,
+      "rank": 1,
+      "position": 22,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "L",
+        "L",
+        "L",
+        "L",
+        "L",
+        null
+      ],
+      "maxPossible": 12,
       "movement": null,
       "eliminated": false
     }
