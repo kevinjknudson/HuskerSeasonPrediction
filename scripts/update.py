@@ -99,6 +99,11 @@ def column_alias(col):
 
 WIN_WORDS = {"w", "win", "wins", "won", "victory"}
 LOSE_WORDS = {"l", "lose", "loss", "lost", "loses"}
+# The bowl question has three answers, and "no bowl" is correct only if
+# Nebraska misses one entirely — a win and a loss are both wrong in that case.
+NO_BOWL_WORDS = {"do not qualify", "does not qualify", "did not qualify",
+                 "not qualify", "dnq", "no bowl", "no bowl game", "misses bowl",
+                 "miss the bowl", "none", "n/a"}
 
 
 def resolve_pick(raw, col, ev, us_names):
@@ -115,6 +120,8 @@ def resolve_pick(raw, col, ev, us_names):
         return "W"
     if s in LOSE_WORDS:
         return "L"
+    if s in NO_BOWL_WORDS:
+        return "N"
     if s in us_names:
         return "W"
 
@@ -439,6 +446,17 @@ def settle(col, ev, cfg):
                 "note": "Entered by hand"}
 
     if ev is None:
+        bowl_cols = {c.lower() for c in cfg.get("bowlColumns", [])}
+        cutoff = cfg.get("noBowlAfter")
+        if col.lower() in bowl_cols and cutoff:
+            try:
+                decided = datetime.now(timezone.utc) >= datetime.fromisoformat(
+                    cutoff).replace(tzinfo=timezone.utc)
+            except ValueError:
+                decided = False
+            if decided:
+                return {"state": "official", "result": "N", "nebraskaPoints": 0,
+                        "opponentPoints": 0, "note": "Nebraska did not make a bowl"}
         return {"state": "scheduled", "result": None, "nebraskaPoints": None,
                 "opponentPoints": None, "note": "No matching game found yet"}
 
@@ -460,28 +478,46 @@ def settle(col, ev, cfg):
 
 # ── standings ──────────────────────────────────────────────────────────────
 
-def order(people, scored, total_points=None, complete=False):
-    """Rank everyone against a given set of finished games."""
+def order(people, scored, scheduled, actual_total=None, complete=False):
+    """Rank everyone against a given set of finished games.
+
+    Ties on correct picks break on the tiebreaker. Once the season is over that
+    means distance from Nebraska's real point total. Before then it means
+    distance from the pace they're on — points per game so far, extrapolated
+    across the full schedule — so the ordering is meaningful all season instead
+    of falling back to alphabetical.
+    """
+    points = sum(g["nebraskaPoints"] or 0 for g in scored)
+    projected = round(points / len(scored) * scheduled) if scored else None
+
     rows = []
     for p in people:
         correct = sum(1 for g in scored if p["picks"].get(g["column"]) == g["result"])
-        diff = (abs(total_points - p["guess"])
-                if complete and total_points is not None and p["guess"] is not None
-                else None)
+        guess = p["guess"]
+        diff = (abs(actual_total - guess)
+                if complete and actual_total is not None and guess is not None else None)
+        pace_delta = (guess - projected) if (projected is not None and guess is not None) else None
         rows.append({"name": p["name"], "correct": correct, "diff": diff,
-                     "guess": p["guess"], "photo": p.get("photo")})
+                     "guess": guess, "photo": p.get("photo"),
+                     "paceDelta": pace_delta,
+                     "paceDiff": abs(pace_delta) if pace_delta is not None else None})
 
-    rows.sort(key=lambda r: (-r["correct"],
-                             r["diff"] if r["diff"] is not None else 10**9,
-                             r["name"].lower()))
+    def key(r):
+        if r["diff"] is not None:
+            return r["diff"]
+        if r["paceDiff"] is not None:
+            return r["paceDiff"]
+        return 10**9
+
+    rows.sort(key=lambda r: (-r["correct"], key(r), r["name"].lower()))
     rank, prev = 0, None
     for i, r in enumerate(rows):
-        key = (r["correct"], r["diff"])
-        if key != prev:                       # ties share a rank
-            rank, prev = i + 1, key
+        marker = (r["correct"], key(r))
+        if marker != prev:                    # ties share a rank
+            rank, prev = i + 1, marker
         r["rank"] = rank
         r["position"] = i + 1                 # unique slot, for the chart
-    return rows
+    return rows, projected
 
 
 def compose(games, people, season, team, photos=None):
@@ -496,13 +532,14 @@ def compose(games, people, season, team, photos=None):
 
     points = sum(g["nebraskaPoints"] or 0 for g in official)
     wins = sum(1 for g in official if g["result"] == "W")
+    losses = sum(1 for g in official if g["result"] == "L")
     complete = len(official) == len(games) and len(games) > 0
 
     # Week by week: re-rank everyone using only the first k finished games.
     # Recomputed from scratch each run, so it self-heals if a result changes.
     history = []
     for k in range(1, len(official) + 1):
-        snap = order(people, official[:k])
+        snap, _ = order(people, official[:k], len(games))
         g = official[k - 1]
         history.append({
             "played": k,
@@ -513,7 +550,7 @@ def compose(games, people, season, team, photos=None):
                                   "correct": r["correct"]} for r in snap},
         })
 
-    rows = order(people, official, points, complete)
+    rows, projected = order(people, official, len(games), points, complete)
     previous = history[-2]["ranks"] if len(history) >= 2 else None
     leader = rows[0]["correct"] if rows else 0
     picks_by_name = {p["name"]: p["picks"] for p in people}
@@ -557,9 +594,9 @@ def compose(games, people, season, team, photos=None):
         "season": season,
         "seasonComplete": complete,
         **team,
-        "record": {"wins": wins, "losses": len(official) - wins,
+        "record": {"wins": wins, "losses": losses,
                    "played": len(official), "scheduled": len(games),
-                   "pointsSoFar": points},
+                   "pointsSoFar": points, "projectedPoints": projected},
         "aliveCount": sum(1 for s in standings if not s["eliminated"]),
         "nextGame": next_game,
         "history": history,
