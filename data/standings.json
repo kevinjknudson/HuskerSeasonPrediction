@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T12:15:48+00:00",
+  "generatedAt": "2026-09-05T12:34:30+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -12,7 +12,7 @@
     "scheduled": 13,
     "pointsSoFar": 0
   },
-  "aliveCount": 22,
+  "aliveCount": 23,
   "nextGame": {
     "column": "Nebraska vs Ohio",
     "opponent": "Ohio Bobcats",
@@ -23,7 +23,7 @@
     "kickoff": "2026-09-05T16:00Z",
     "site": "home",
     "split": {
-      "nebraska": 22,
+      "nebraska": 23,
       "opponent": 0,
       "none": 0
     }
@@ -818,6 +818,33 @@
         null
       ],
       "maxPossible": 12,
+      "movement": null,
+      "eliminated": false
+    },
+    {
+      "name": "Zach Stull",
+      "correct": 0,
+      "diff": null,
+      "guess": 364,
+      "photo": null,
+      "rank": 1,
+      "position": 23,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W",
+        "L",
+        "L",
+        "L",
+        "W",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "maxPossible": 13,
       "movement": null,
       "eliminated": false
     }
