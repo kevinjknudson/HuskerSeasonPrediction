@@ -10,7 +10,32 @@
   "bowlColumns": [
     "Bowl Game Performance"
   ],
-  "photos": {},
+  "noBowlAfter": "2026-12-14",
+  "photos": {
+    "Ross Rasmussen": "photos/ross-rasmussen.jpg",
+    "Steve Warner": "photos/steve-warner.jpg",
+    "karen knudson": "photos/karen-knudson.jpg",
+    "Katie Rerucha": "photos/katie-rerucha.jpg",
+    "Dave Shellhammer": "photos/dave-shellhammer.jpg",
+    "Hendee-Cat": "photos/hendee-cat.jpg",
+    "Eric Spain": "photos/eric-spain.jpg",
+    "AJ": "photos/aj.jpg",
+    "Callie": "photos/callie.jpg",
+    "Bailey Rasmussen": "photos/bailey-rasmussen.jpg",
+    "Beth Houpt": "photos/beth-houpt.jpg",
+    "Kevin V": "photos/kevin-v.jpg",
+    "Mitch Hong": "photos/mitch-hong.jpg",
+    "Sandy": "photos/sandy.jpg",
+    "Benny Nahrstadt": "photos/benny-nahrstadt.jpg",
+    "Dylan Ragonese": "photos/dylan-ragonese.jpg",
+    "Jeffrey Daley": "photos/jeffrey-daley.jpg",
+    "Adam Werner": "photos/adam-werner.jpg",
+    "Kevin Knudson": "photos/kevin-knudson.jpg",
+    "Sam Cann": "photos/sam-cann.jpg",
+    "Bo Nix": "photos/bo-nix.jpg",
+    "Zac Gillman": "photos/zac-gillman.jpg",
+    "Zach Stull": "photos/zach-stull.jpg"
+  },
   "aliases": {},
   "overrides": {}
 }
