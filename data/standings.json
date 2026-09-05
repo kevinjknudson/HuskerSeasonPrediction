@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-09-05T19:27:58+00:00",
+  "generatedAt": "2026-09-05T19:47:00+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
   "teamAbbr": "NEB",
   "teamColor": "#E41C38",
   "record": {
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
-    "played": 0,
+    "played": 1,
     "scheduled": 13,
-    "pointsSoFar": 0
+    "pointsSoFar": 49
   },
   "aliveCount": 24,
   "nextGame": {
-    "column": "Nebraska vs Ohio",
-    "opponent": "Ohio Bobcats",
-    "opponentShort": "Ohio",
-    "abbr": "OHIO",
+    "column": "Nebraska vs Bowling Green",
+    "opponent": "Bowling Green Falcons",
+    "opponentShort": "Bowling Green",
+    "abbr": "BGSU",
     "color": "#444444",
-    "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/195.png",
-    "kickoff": "2026-09-05T16:00Z",
+    "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/189.png",
+    "kickoff": "2026-09-12T23:00Z",
     "site": "home",
     "split": {
       "nebraska": 24,
@@ -28,7 +28,136 @@
       "none": 0
     }
   },
-  "history": [],
+  "history": [
+    {
+      "played": 1,
+      "column": "Nebraska vs Ohio",
+      "abbr": "OHIO",
+      "result": "W",
+      "ranks": {
+        "Adam Werner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 1
+        },
+        "AJ": {
+          "rank": 1,
+          "position": 2,
+          "correct": 1
+        },
+        "Bailey Rasmussen": {
+          "rank": 1,
+          "position": 3,
+          "correct": 1
+        },
+        "Benny Nahrstadt": {
+          "rank": 1,
+          "position": 4,
+          "correct": 1
+        },
+        "Beth Houpt": {
+          "rank": 1,
+          "position": 5,
+          "correct": 1
+        },
+        "Bo Nix": {
+          "rank": 1,
+          "position": 6,
+          "correct": 1
+        },
+        "Callie": {
+          "rank": 1,
+          "position": 7,
+          "correct": 1
+        },
+        "Chris Daley": {
+          "rank": 1,
+          "position": 8,
+          "correct": 1
+        },
+        "Dave Shellhammer": {
+          "rank": 1,
+          "position": 9,
+          "correct": 1
+        },
+        "Dylan Ragonese": {
+          "rank": 1,
+          "position": 10,
+          "correct": 1
+        },
+        "Eric Spain": {
+          "rank": 1,
+          "position": 11,
+          "correct": 1
+        },
+        "Hendee-Cat": {
+          "rank": 1,
+          "position": 12,
+          "correct": 1
+        },
+        "Jeffrey Daley": {
+          "rank": 1,
+          "position": 13,
+          "correct": 1
+        },
+        "Karen Knudson": {
+          "rank": 1,
+          "position": 14,
+          "correct": 1
+        },
+        "Katie Rerucha": {
+          "rank": 1,
+          "position": 15,
+          "correct": 1
+        },
+        "Kevin Knudson": {
+          "rank": 1,
+          "position": 16,
+          "correct": 1
+        },
+        "Kevin V": {
+          "rank": 1,
+          "position": 17,
+          "correct": 1
+        },
+        "Mitch Hong": {
+          "rank": 1,
+          "position": 18,
+          "correct": 1
+        },
+        "Ross Rasmussen": {
+          "rank": 1,
+          "position": 19,
+          "correct": 1
+        },
+        "Sam Cann": {
+          "rank": 1,
+          "position": 20,
+          "correct": 1
+        },
+        "Sandy": {
+          "rank": 1,
+          "position": 21,
+          "correct": 1
+        },
+        "Steve Warner": {
+          "rank": 1,
+          "position": 22,
+          "correct": 1
+        },
+        "Zac Gillman": {
+          "rank": 1,
+          "position": 23,
+          "correct": 1
+        },
+        "Zach Stull": {
+          "rank": 1,
+          "position": 24,
+          "correct": 1
+        }
+      }
+    }
+  ],
   "games": [
     {
       "column": "Nebraska vs Ohio",
@@ -39,10 +168,10 @@
       "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/195.png",
       "abbr": "OHIO",
       "color": "#444444",
-      "state": "scheduled",
-      "result": null,
-      "nebraskaPoints": 14,
-      "opponentPoints": 13,
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 49,
+      "opponentPoints": 21,
       "note": null
     },
     {
@@ -229,7 +358,7 @@
   "standings": [
     {
       "name": "Adam Werner",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 410,
       "photo": "photos/adam-werner.jpg",
@@ -256,7 +385,7 @@
     },
     {
       "name": "AJ",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 404,
       "photo": "photos/aj.jpg",
@@ -283,7 +412,7 @@
     },
     {
       "name": "Bailey Rasmussen",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 353,
       "photo": "photos/bailey-rasmussen.jpg",
@@ -310,7 +439,7 @@
     },
     {
       "name": "Benny Nahrstadt",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 384,
       "photo": "photos/benny-nahrstadt.jpg",
@@ -337,7 +466,7 @@
     },
     {
       "name": "Beth Houpt",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 295,
       "photo": "photos/beth-houpt.jpg",
@@ -364,7 +493,7 @@
     },
     {
       "name": "Bo Nix",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 384,
       "photo": "photos/bo-nix.jpg",
@@ -391,7 +520,7 @@
     },
     {
       "name": "Callie",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 380,
       "photo": "photos/callie.jpg",
@@ -418,7 +547,7 @@
     },
     {
       "name": "Chris Daley",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 356,
       "photo": "photos/chris-daley.jpg",
@@ -445,7 +574,7 @@
     },
     {
       "name": "Dave Shellhammer",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 373,
       "photo": "photos/dave-shellhammer.jpg",
@@ -472,7 +601,7 @@
     },
     {
       "name": "Dylan Ragonese",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 314,
       "photo": "photos/dylan-ragonese.jpg",
@@ -499,7 +628,7 @@
     },
     {
       "name": "Eric Spain",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 370,
       "photo": "photos/eric-spain.jpg",
@@ -526,7 +655,7 @@
     },
     {
       "name": "Hendee-Cat",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 412,
       "photo": "photos/hendee-cat.jpg",
@@ -553,7 +682,7 @@
     },
     {
       "name": "Jeffrey Daley",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 452,
       "photo": "photos/jeffrey-daley.jpg",
@@ -580,7 +709,7 @@
     },
     {
       "name": "Karen Knudson",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 343,
       "photo": "photos/karen-knudson.jpg",
@@ -607,7 +736,7 @@
     },
     {
       "name": "Katie Rerucha",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 333,
       "photo": "photos/katie-rerucha.jpg",
@@ -634,7 +763,7 @@
     },
     {
       "name": "Kevin Knudson",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 408,
       "photo": "photos/kevin-knudson.jpg",
@@ -661,7 +790,7 @@
     },
     {
       "name": "Kevin V",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 340,
       "photo": "photos/kevin-v.jpg",
@@ -688,7 +817,7 @@
     },
     {
       "name": "Mitch Hong",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 321,
       "photo": "photos/mitch-hong.jpg",
@@ -715,7 +844,7 @@
     },
     {
       "name": "Ross Rasmussen",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 420,
       "photo": "photos/ross-rasmussen.jpg",
@@ -742,7 +871,7 @@
     },
     {
       "name": "Sam Cann",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 418,
       "photo": "photos/sam-cann.jpg",
@@ -769,7 +898,7 @@
     },
     {
       "name": "Sandy",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 250,
       "photo": "photos/sandy.jpg",
@@ -796,7 +925,7 @@
     },
     {
       "name": "Steve Warner",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 388,
       "photo": "photos/steve-warner.jpg",
@@ -823,7 +952,7 @@
     },
     {
       "name": "Zac Gillman",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 321,
       "photo": "photos/zac-gillman.jpg",
@@ -850,7 +979,7 @@
     },
     {
       "name": "Zach Stull",
-      "correct": 0,
+      "correct": 1,
       "diff": null,
       "guess": 364,
       "photo": "photos/zach-stull.jpg",
