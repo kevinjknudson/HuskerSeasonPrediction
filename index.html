@@ -232,6 +232,7 @@
   .pstat{font-family:var(--sans);font-size:12.5px;font-weight:700;
     color:rgba(255,255,255,.95);margin-top:6px}
   .ptb{font-size:11.5px;font-weight:500;color:rgba(255,255,255,.62);margin-top:1px}
+  .ptb.pace{color:rgba(255,255,255,.45);font-size:10.5px}
 
   .runners{display:flex;justify-content:center;gap:clamp(14px,6vw,54px);
     margin-top:32px;flex-wrap:wrap}
@@ -439,6 +440,12 @@ function render(d){
     : p.guess !== null ? `Tiebreaker: ${p.guess}`
     : "";
 
+  const paceLine = p => {
+    if (p.diff !== null || p.paceDelta === null || p.paceDelta === undefined) return "";
+    if (p.paceDelta === 0) return "Dead on pace";
+    return `${Math.abs(p.paceDelta)} ${p.paceDelta > 0 ? "over" : "under"} pace`;
+  };
+
   const movement = p => {
     if (p.eliminated) return `<span class="mv out">Out</span>`;
     if (p.movement === null || p.movement === undefined) return "";
@@ -461,6 +468,7 @@ function render(d){
       <div class="pstat">${correctLine(p)}</div>
       ${stakes(p) ? `<div class="ptb">${esc(stakes(p))}</div>` : ""}
       ${tbLine(p) ? `<div class="ptb">${esc(tbLine(p))}</div>` : ""}
+      ${paceLine(p) ? `<div class="ptb pace">${esc(paceLine(p))}</div>` : ""}
     </div>`;
 
   const podium = `<div class="podium">
@@ -491,7 +499,9 @@ function render(d){
   const opp = game => ({abbr: game.abbr || game.column.slice(0,4).toUpperCase(),
                         color: game.color || "#7A6857", logo: game.logo,
                         name: game.opponent || game.column});
-  const picked = (game, pick) => pick === "W" ? NEB : opp(game);
+  const NO_BOWL = {abbr: "DNQ", color: "#6E5C4B", logo: null, name: "No bowl game"};
+  const picked = (game, pick) =>
+    pick === "W" ? NEB : pick === "N" ? NO_BOWL : opp(game);
 
 
   const when = iso => iso
@@ -523,7 +533,8 @@ function render(d){
   const scoreboard = plate("scoreboard", `
     <div style="display:flex;flex-wrap:wrap">
       <div class="sb"><b>${r.wins}&#8211;${r.losses}</b><span>Record</span></div>
-      <div class="sb"><b>${r.pointsSoFar}</b><span>Total points</span></div>
+      <div class="sb"><b>${r.pointsSoFar}</b><span>${r.projectedPoints
+        ? `Points \u00B7 on pace for ${r.projectedPoints}` : "Total points"}</span></div>
       ${nextCell}
     </div>${split}`);
 
