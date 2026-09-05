@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T13:29:01+00:00",
+  "generatedAt": "2026-09-05T13:35:45+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -232,7 +232,7 @@
       "correct": 0,
       "diff": null,
       "guess": 410,
-      "photo": null,
+      "photo": "photos/adam-werner.jpg",
       "rank": 1,
       "position": 1,
       "picks": [
@@ -259,7 +259,7 @@
       "correct": 0,
       "diff": null,
       "guess": 404,
-      "photo": null,
+      "photo": "photos/aj.jpg",
       "rank": 1,
       "position": 2,
       "picks": [
@@ -286,7 +286,7 @@
       "correct": 0,
       "diff": null,
       "guess": 353,
-      "photo": null,
+      "photo": "photos/bailey-rasmussen.jpg",
       "rank": 1,
       "position": 3,
       "picks": [
@@ -313,7 +313,7 @@
       "correct": 0,
       "diff": null,
       "guess": 384,
-      "photo": null,
+      "photo": "photos/benny-nahrstadt.jpg",
       "rank": 1,
       "position": 4,
       "picks": [
@@ -340,7 +340,7 @@
       "correct": 0,
       "diff": null,
       "guess": 295,
-      "photo": null,
+      "photo": "photos/beth-houpt.jpg",
       "rank": 1,
       "position": 5,
       "picks": [
@@ -367,7 +367,7 @@
       "correct": 0,
       "diff": null,
       "guess": 384,
-      "photo": null,
+      "photo": "photos/bo-nix.jpg",
       "rank": 1,
       "position": 6,
       "picks": [
@@ -394,7 +394,7 @@
       "correct": 0,
       "diff": null,
       "guess": 380,
-      "photo": null,
+      "photo": "photos/callie.jpg",
       "rank": 1,
       "position": 7,
       "picks": [
@@ -421,7 +421,7 @@
       "correct": 0,
       "diff": null,
       "guess": 373,
-      "photo": null,
+      "photo": "photos/dave-shellhammer.jpg",
       "rank": 1,
       "position": 8,
       "picks": [
@@ -448,7 +448,7 @@
       "correct": 0,
       "diff": null,
       "guess": 314,
-      "photo": null,
+      "photo": "photos/dylan-ragonese.jpg",
       "rank": 1,
       "position": 9,
       "picks": [
@@ -475,7 +475,7 @@
       "correct": 0,
       "diff": null,
       "guess": 370,
-      "photo": null,
+      "photo": "photos/eric-spain.jpg",
       "rank": 1,
       "position": 10,
       "picks": [
@@ -502,7 +502,7 @@
       "correct": 0,
       "diff": null,
       "guess": 412,
-      "photo": null,
+      "photo": "photos/hendee-cat.jpg",
       "rank": 1,
       "position": 11,
       "picks": [
@@ -529,7 +529,7 @@
       "correct": 0,
       "diff": null,
       "guess": 452,
-      "photo": null,
+      "photo": "photos/jeffrey-daley.jpg",
       "rank": 1,
       "position": 12,
       "picks": [
@@ -556,7 +556,7 @@
       "correct": 0,
       "diff": null,
       "guess": 343,
-      "photo": null,
+      "photo": "photos/karen-knudson.jpg",
       "rank": 1,
       "position": 13,
       "picks": [
@@ -583,7 +583,7 @@
       "correct": 0,
       "diff": null,
       "guess": 333,
-      "photo": null,
+      "photo": "photos/katie-rerucha.jpg",
       "rank": 1,
       "position": 14,
       "picks": [
@@ -610,7 +610,7 @@
       "correct": 0,
       "diff": null,
       "guess": 408,
-      "photo": null,
+      "photo": "photos/kevin-knudson.jpg",
       "rank": 1,
       "position": 15,
       "picks": [
@@ -637,7 +637,7 @@
       "correct": 0,
       "diff": null,
       "guess": 340,
-      "photo": null,
+      "photo": "photos/kevin-v.jpg",
       "rank": 1,
       "position": 16,
       "picks": [
@@ -664,7 +664,7 @@
       "correct": 0,
       "diff": null,
       "guess": 321,
-      "photo": null,
+      "photo": "photos/mitch-hong.jpg",
       "rank": 1,
       "position": 17,
       "picks": [
@@ -691,7 +691,7 @@
       "correct": 0,
       "diff": null,
       "guess": 420,
-      "photo": null,
+      "photo": "photos/ross-rasmussen.jpg",
       "rank": 1,
       "position": 18,
       "picks": [
@@ -718,7 +718,7 @@
       "correct": 0,
       "diff": null,
       "guess": 418,
-      "photo": null,
+      "photo": "photos/sam-cann.jpg",
       "rank": 1,
       "position": 19,
       "picks": [
@@ -745,7 +745,7 @@
       "correct": 0,
       "diff": null,
       "guess": 250,
-      "photo": null,
+      "photo": "photos/sandy.jpg",
       "rank": 1,
       "position": 20,
       "picks": [
@@ -772,7 +772,7 @@
       "correct": 0,
       "diff": null,
       "guess": 388,
-      "photo": null,
+      "photo": "photos/steve-warner.jpg",
       "rank": 1,
       "position": 21,
       "picks": [
@@ -799,7 +799,7 @@
       "correct": 0,
       "diff": null,
       "guess": 321,
-      "photo": null,
+      "photo": "photos/zac-gillman.jpg",
       "rank": 1,
       "position": 22,
       "picks": [
@@ -826,7 +826,7 @@
       "correct": 0,
       "diff": null,
       "guess": 364,
-      "photo": null,
+      "photo": "photos/zach-stull.jpg",
       "rank": 1,
       "position": 23,
       "picks": [
