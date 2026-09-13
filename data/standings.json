@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T01:31:23+00:00",
+  "generatedAt": "2026-09-13T01:48:55+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -186,8 +186,8 @@
       "color": "#444444",
       "state": "scheduled",
       "result": null,
-      "nebraskaPoints": 35,
-      "opponentPoints": 0,
+      "nebraskaPoints": null,
+      "opponentPoints": null,
       "note": null
     },
     {
