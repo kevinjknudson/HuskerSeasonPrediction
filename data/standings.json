@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T23:55:45+00:00",
+  "generatedAt": "2026-10-20T04:16:29+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -21,7 +21,7 @@
     "abbr": "WASH",
     "color": "#444444",
     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
-    "kickoff": "2026-10-31T04:00Z",
+    "kickoff": "2026-11-01T00:00Z",
     "site": "home",
     "split": {
       "nebraska": 6,
@@ -1037,7 +1037,7 @@
       "column": "Nebraska vs Washington",
       "opponent": "Washington Huskies",
       "opponentShort": "Washington",
-      "kickoff": "2026-10-31T04:00Z",
+      "kickoff": "2026-11-01T00:00Z",
       "site": "home",
       "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
       "abbr": "WASH",
