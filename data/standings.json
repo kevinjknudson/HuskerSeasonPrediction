@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-14T20:05:20+00:00",
+  "generatedAt": "2026-11-14T23:58:38+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
   "teamAbbr": "NEB",
   "teamColor": "#E41C38",
   "record": {
-    "wins": 5,
+    "wins": 6,
     "losses": 4,
-    "played": 9,
+    "played": 10,
     "scheduled": 13,
-    "pointsSoFar": 272,
-    "projectedPoints": 393
+    "pointsSoFar": 303,
+    "projectedPoints": 394
   },
-  "aliveCount": 23,
+  "aliveCount": 22,
   "nextGame": {
-    "column": "Nebraska @ Rutgers",
-    "opponent": "Rutgers Scarlet Knights",
-    "opponentShort": "Rutgers",
-    "abbr": "RUTG",
+    "column": "Nebraska vs Ohio State",
+    "opponent": "Ohio State Buckeyes",
+    "opponentShort": "Ohio State",
+    "abbr": "OSU",
     "color": "#444444",
-    "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/164.png",
-    "kickoff": "2026-11-14T17:30Z",
-    "site": "away",
+    "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+    "kickoff": "2026-11-21T05:00Z",
+    "site": "home",
     "split": {
-      "nebraska": 22,
-      "opponent": 2,
+      "nebraska": 0,
+      "opponent": 24,
       "none": 0
     }
   },
@@ -1181,6 +1181,134 @@
           "correct": 4
         }
       }
+    },
+    {
+      "played": 10,
+      "column": "Nebraska @ Rutgers",
+      "abbr": "RUTG",
+      "result": "W",
+      "ranks": {
+        "Steve Warner": {
+          "rank": 1,
+          "position": 1,
+          "correct": 10
+        },
+        "Karen Knudson": {
+          "rank": 2,
+          "position": 2,
+          "correct": 10
+        },
+        "Beth Houpt": {
+          "rank": 3,
+          "position": 3,
+          "correct": 10
+        },
+        "Bo Nix": {
+          "rank": 4,
+          "position": 4,
+          "correct": 9
+        },
+        "Kevin Knudson": {
+          "rank": 5,
+          "position": 5,
+          "correct": 9
+        },
+        "Adam Werner": {
+          "rank": 6,
+          "position": 6,
+          "correct": 9
+        },
+        "Sam Cann": {
+          "rank": 7,
+          "position": 7,
+          "correct": 9
+        },
+        "Ross Rasmussen": {
+          "rank": 8,
+          "position": 8,
+          "correct": 9
+        },
+        "Zach Stull": {
+          "rank": 9,
+          "position": 9,
+          "correct": 9
+        },
+        "Chris Daley": {
+          "rank": 10,
+          "position": 10,
+          "correct": 9
+        },
+        "Jeffrey Daley": {
+          "rank": 11,
+          "position": 11,
+          "correct": 9
+        },
+        "Mitch Hong": {
+          "rank": 12,
+          "position": 12,
+          "correct": 9
+        },
+        "AJ": {
+          "rank": 13,
+          "position": 13,
+          "correct": 8
+        },
+        "Benny Nahrstadt": {
+          "rank": 13,
+          "position": 14,
+          "correct": 8
+        },
+        "Callie": {
+          "rank": 15,
+          "position": 15,
+          "correct": 8
+        },
+        "Dave Shellhammer": {
+          "rank": 16,
+          "position": 16,
+          "correct": 8
+        },
+        "Eric Spain": {
+          "rank": 17,
+          "position": 17,
+          "correct": 8
+        },
+        "Bailey Rasmussen": {
+          "rank": 18,
+          "position": 18,
+          "correct": 8
+        },
+        "Zac Gillman": {
+          "rank": 19,
+          "position": 19,
+          "correct": 8
+        },
+        "Dylan Ragonese": {
+          "rank": 20,
+          "position": 20,
+          "correct": 8
+        },
+        "Sandy": {
+          "rank": 21,
+          "position": 21,
+          "correct": 8
+        },
+        "Kevin V": {
+          "rank": 22,
+          "position": 22,
+          "correct": 7
+        },
+        "Hendee-Cat": {
+          "rank": 23,
+          "position": 23,
+          "correct": 6
+        },
+        "Katie Rerucha": {
+          "rank": 24,
+          "position": 24,
+          "correct": 5
+        }
+      }
     }
   ],
   "games": [
@@ -1328,10 +1456,10 @@
       "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/164.png",
       "abbr": "RUTG",
       "color": "#444444",
-      "state": "scheduled",
-      "result": null,
-      "nebraskaPoints": null,
-      "opponentPoints": null,
+      "state": "official",
+      "result": "W",
+      "nebraskaPoints": 31,
+      "opponentPoints": 0,
       "note": null
     },
     {
@@ -1383,12 +1511,12 @@
   "standings": [
     {
       "name": "Steve Warner",
-      "correct": 9,
+      "correct": 10,
       "diff": null,
       "guess": 388,
       "photo": "photos/steve-warner.jpg",
-      "paceDelta": -5,
-      "paceDiff": 5,
+      "paceDelta": -6,
+      "paceDiff": 6,
       "rank": 1,
       "position": 1,
       "picks": [
@@ -1407,17 +1535,17 @@
         "L"
       ],
       "maxPossible": 13,
-      "movement": 3,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Karen Knudson",
-      "correct": 9,
+      "correct": 10,
       "diff": null,
       "guess": 343,
       "photo": "photos/karen-knudson.jpg",
-      "paceDelta": -50,
-      "paceDiff": 50,
+      "paceDelta": -51,
+      "paceDiff": 51,
       "rank": 2,
       "position": 2,
       "picks": [
@@ -1436,17 +1564,17 @@
         "L"
       ],
       "maxPossible": 13,
-      "movement": 5,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Beth Houpt",
-      "correct": 9,
+      "correct": 10,
       "diff": null,
       "guess": 295,
       "photo": "photos/beth-houpt.jpg",
-      "paceDelta": -98,
-      "paceDiff": 98,
+      "paceDelta": -99,
+      "paceDiff": 99,
       "rank": 3,
       "position": 3,
       "picks": [
@@ -1465,17 +1593,17 @@
         "L"
       ],
       "maxPossible": 13,
-      "movement": 5,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Bo Nix",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 384,
       "photo": "photos/bo-nix.jpg",
-      "paceDelta": -9,
-      "paceDiff": 9,
+      "paceDelta": -10,
+      "paceDiff": 10,
       "rank": 4,
       "position": 4,
       "picks": [
@@ -1494,17 +1622,17 @@
         "W"
       ],
       "maxPossible": 12,
-      "movement": 7,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Kevin Knudson",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 408,
       "photo": "photos/kevin-knudson.jpg",
-      "paceDelta": 15,
-      "paceDiff": 15,
+      "paceDelta": 14,
+      "paceDiff": 14,
       "rank": 5,
       "position": 5,
       "picks": [
@@ -1523,17 +1651,17 @@
         "W"
       ],
       "maxPossible": 12,
-      "movement": 4,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Adam Werner",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 410,
       "photo": "photos/adam-werner.jpg",
-      "paceDelta": 17,
-      "paceDiff": 17,
+      "paceDelta": 16,
+      "paceDiff": 16,
       "rank": 6,
       "position": 6,
       "picks": [
@@ -1552,17 +1680,17 @@
         "L"
       ],
       "maxPossible": 12,
-      "movement": -3,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Sam Cann",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 418,
       "photo": "photos/sam-cann.jpg",
-      "paceDelta": 25,
-      "paceDiff": 25,
+      "paceDelta": 24,
+      "paceDiff": 24,
       "rank": 7,
       "position": 7,
       "picks": [
@@ -1581,17 +1709,17 @@
         "L"
       ],
       "maxPossible": 12,
-      "movement": -5,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Ross Rasmussen",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 420,
       "photo": "photos/ross-rasmussen.jpg",
-      "paceDelta": 27,
-      "paceDiff": 27,
+      "paceDelta": 26,
+      "paceDiff": 26,
       "rank": 8,
       "position": 8,
       "picks": [
@@ -1610,17 +1738,17 @@
         "L"
       ],
       "maxPossible": 12,
-      "movement": -7,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Zach Stull",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 364,
       "photo": "photos/zach-stull.jpg",
-      "paceDelta": -29,
-      "paceDiff": 29,
+      "paceDelta": -30,
+      "paceDiff": 30,
       "rank": 9,
       "position": 9,
       "picks": [
@@ -1639,17 +1767,17 @@
         "W"
       ],
       "maxPossible": 12,
-      "movement": -4,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Chris Daley",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 356,
       "photo": "photos/chris-daley.jpg",
-      "paceDelta": -37,
-      "paceDiff": 37,
+      "paceDelta": -38,
+      "paceDiff": 38,
       "rank": 10,
       "position": 10,
       "picks": [
@@ -1668,17 +1796,17 @@
         "L"
       ],
       "maxPossible": 12,
-      "movement": -4,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Jeffrey Daley",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 452,
       "photo": "photos/jeffrey-daley.jpg",
-      "paceDelta": 59,
-      "paceDiff": 59,
+      "paceDelta": 58,
+      "paceDiff": 58,
       "rank": 11,
       "position": 11,
       "picks": [
@@ -1697,17 +1825,17 @@
         "L"
       ],
       "maxPossible": 12,
-      "movement": -1,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Mitch Hong",
-      "correct": 8,
+      "correct": 9,
       "diff": null,
       "guess": 321,
       "photo": "photos/mitch-hong.jpg",
-      "paceDelta": -72,
-      "paceDiff": 72,
+      "paceDelta": -73,
+      "paceDiff": 73,
       "rank": 12,
       "position": 12,
       "picks": [
@@ -1726,18 +1854,18 @@
         "N"
       ],
       "maxPossible": 12,
-      "movement": 4,
+      "movement": 0,
       "eliminated": false
     },
     {
-      "name": "Zac Gillman",
+      "name": "AJ",
       "correct": 8,
       "diff": null,
-      "guess": 321,
-      "photo": "photos/zac-gillman.jpg",
-      "paceDelta": -72,
-      "paceDiff": 72,
-      "rank": 12,
+      "guess": 404,
+      "photo": "photos/aj.jpg",
+      "paceDelta": 10,
+      "paceDiff": 10,
+      "rank": 13,
       "position": 13,
       "picks": [
         "W",
@@ -1747,26 +1875,26 @@
         "W",
         "L",
         "L",
+        "W",
         "L",
+        "W",
         "L",
-        "L",
-        "L",
-        "L",
-        "N"
+        "W",
+        "W"
       ],
-      "maxPossible": 12,
-      "movement": 4,
+      "maxPossible": 11,
+      "movement": 2,
       "eliminated": false
     },
     {
       "name": "Benny Nahrstadt",
-      "correct": 7,
+      "correct": 8,
       "diff": null,
       "guess": 384,
       "photo": "photos/benny-nahrstadt.jpg",
-      "paceDelta": -9,
-      "paceDiff": 9,
-      "rank": 14,
+      "paceDelta": -10,
+      "paceDiff": 10,
+      "rank": 13,
       "position": 14,
       "picks": [
         "W",
@@ -1784,46 +1912,46 @@
         "L"
       ],
       "maxPossible": 11,
-      "movement": -3,
+      "movement": 1,
       "eliminated": false
     },
     {
-      "name": "AJ",
-      "correct": 7,
+      "name": "Callie",
+      "correct": 8,
       "diff": null,
-      "guess": 404,
-      "photo": "photos/aj.jpg",
-      "paceDelta": 11,
-      "paceDiff": 11,
+      "guess": 380,
+      "photo": "photos/callie.jpg",
+      "paceDelta": -14,
+      "paceDiff": 14,
       "rank": 15,
       "position": 15,
       "picks": [
         "W",
         "W",
         "W",
-        "L",
+        "W",
         "W",
         "L",
         "L",
         "W",
-        "L",
+        "W",
         "W",
         "L",
         "W",
         "W"
       ],
       "maxPossible": 11,
-      "movement": 5,
+      "movement": 1,
       "eliminated": false
     },
     {
-      "name": "Callie",
-      "correct": 7,
+      "name": "Dave Shellhammer",
+      "correct": 8,
       "diff": null,
-      "guess": 380,
-      "photo": "photos/callie.jpg",
-      "paceDelta": -13,
-      "paceDiff": 13,
+      "guess": 373,
+      "photo": "photos/dave-shellhammer.jpg",
+      "paceDelta": -21,
+      "paceDiff": 21,
       "rank": 16,
       "position": 16,
       "picks": [
@@ -1832,35 +1960,6 @@
         "W",
         "W",
         "W",
-        "L",
-        "L",
-        "W",
-        "W",
-        "W",
-        "L",
-        "W",
-        "W"
-      ],
-      "maxPossible": 11,
-      "movement": -3,
-      "eliminated": false
-    },
-    {
-      "name": "Dave Shellhammer",
-      "correct": 7,
-      "diff": null,
-      "guess": 373,
-      "photo": "photos/dave-shellhammer.jpg",
-      "paceDelta": -20,
-      "paceDiff": 20,
-      "rank": 17,
-      "position": 17,
-      "picks": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W",
         "W",
         "L",
         "L",
@@ -1871,19 +1970,19 @@
         "W"
       ],
       "maxPossible": 11,
-      "movement": -3,
+      "movement": 1,
       "eliminated": false
     },
     {
       "name": "Eric Spain",
-      "correct": 7,
+      "correct": 8,
       "diff": null,
       "guess": 370,
       "photo": "photos/eric-spain.jpg",
-      "paceDelta": -23,
-      "paceDiff": 23,
-      "rank": 18,
-      "position": 18,
+      "paceDelta": -24,
+      "paceDiff": 24,
+      "rank": 17,
+      "position": 17,
       "picks": [
         "W",
         "W",
@@ -1900,19 +1999,19 @@
         "L"
       ],
       "maxPossible": 11,
-      "movement": -3,
+      "movement": 1,
       "eliminated": false
     },
     {
       "name": "Bailey Rasmussen",
-      "correct": 7,
+      "correct": 8,
       "diff": null,
       "guess": 353,
       "photo": "photos/bailey-rasmussen.jpg",
-      "paceDelta": -40,
-      "paceDiff": 40,
-      "rank": 19,
-      "position": 19,
+      "paceDelta": -41,
+      "paceDiff": 41,
+      "rank": 18,
+      "position": 18,
       "picks": [
         "W",
         "W",
@@ -1929,17 +2028,46 @@
         "W"
       ],
       "maxPossible": 11,
-      "movement": 2,
+      "movement": 1,
+      "eliminated": false
+    },
+    {
+      "name": "Zac Gillman",
+      "correct": 8,
+      "diff": null,
+      "guess": 321,
+      "photo": "photos/zac-gillman.jpg",
+      "paceDelta": -73,
+      "paceDiff": 73,
+      "rank": 19,
+      "position": 19,
+      "picks": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "W",
+        "L",
+        "L",
+        "L",
+        "L",
+        "L",
+        "L",
+        "L",
+        "N"
+      ],
+      "maxPossible": 11,
+      "movement": -7,
       "eliminated": false
     },
     {
       "name": "Dylan Ragonese",
-      "correct": 7,
+      "correct": 8,
       "diff": null,
       "guess": 314,
       "photo": "photos/dylan-ragonese.jpg",
-      "paceDelta": -79,
-      "paceDiff": 79,
+      "paceDelta": -80,
+      "paceDiff": 80,
       "rank": 20,
       "position": 20,
       "picks": [
@@ -1958,17 +2086,17 @@
         "L"
       ],
       "maxPossible": 11,
-      "movement": 2,
+      "movement": 0,
       "eliminated": false
     },
     {
       "name": "Sandy",
-      "correct": 7,
+      "correct": 8,
       "diff": null,
       "guess": 250,
       "photo": "photos/sandy.jpg",
-      "paceDelta": -143,
-      "paceDiff": 143,
+      "paceDelta": -144,
+      "paceDiff": 144,
       "rank": 21,
       "position": 21,
       "picks": [
@@ -1987,7 +2115,36 @@
         "L"
       ],
       "maxPossible": 11,
-      "movement": -3,
+      "movement": 0,
+      "eliminated": false
+    },
+    {
+      "name": "Kevin V",
+      "correct": 7,
+      "diff": null,
+      "guess": 340,
+      "photo": "photos/kevin-v.jpg",
+      "paceDelta": -54,
+      "paceDiff": 54,
+      "rank": 22,
+      "position": 22,
+      "picks": [
+        "W",
+        "W",
+        "L",
+        "L",
+        "W",
+        "L",
+        "L",
+        "W",
+        "L",
+        "W",
+        "L",
+        "W",
+        "W"
+      ],
+      "maxPossible": 10,
+      "movement": 1,
       "eliminated": false
     },
     {
@@ -1996,66 +2153,37 @@
       "diff": null,
       "guess": 412,
       "photo": "photos/hendee-cat.jpg",
-      "paceDelta": 19,
-      "paceDiff": 19,
-      "rank": 22,
-      "position": 22,
-      "picks": [
-        "W",
-        "W",
-        "W",
-        "L",
-        "W",
-        "W",
-        "L",
-        "L",
-        "W",
-        "L",
-        "L",
-        "L",
-        "W"
-      ],
-      "maxPossible": 10,
-      "movement": -3,
-      "eliminated": false
-    },
-    {
-      "name": "Kevin V",
-      "correct": 6,
-      "diff": null,
-      "guess": 340,
-      "photo": "photos/kevin-v.jpg",
-      "paceDelta": -53,
-      "paceDiff": 53,
+      "paceDelta": 18,
+      "paceDiff": 18,
       "rank": 23,
       "position": 23,
       "picks": [
         "W",
         "W",
+        "W",
         "L",
-        "L",
+        "W",
         "W",
         "L",
         "L",
         "W",
         "L",
-        "W",
         "L",
-        "W",
+        "L",
         "W"
       ],
-      "maxPossible": 10,
-      "movement": 0,
-      "eliminated": false
+      "maxPossible": 9,
+      "movement": -1,
+      "eliminated": true
     },
     {
       "name": "Katie Rerucha",
-      "correct": 4,
+      "correct": 5,
       "diff": null,
       "guess": 333,
       "photo": "photos/katie-rerucha.jpg",
-      "paceDelta": -60,
-      "paceDiff": 60,
+      "paceDelta": -61,
+      "paceDiff": 61,
       "rank": 24,
       "position": 24,
       "picks": [
