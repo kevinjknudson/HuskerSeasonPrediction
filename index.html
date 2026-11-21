@@ -456,8 +456,9 @@ function render(d){
 
   const stakes = p => {
     if (d.seasonComplete) return "";
-    if (p.eliminated) return "Can't catch the leader";
-    return p.maxPossible > p.correct ? `Can still reach ${p.maxPossible}` : "";
+    if (p.bestRank) return p.bestRank === 1 ? "Can still win"
+                                            : `${ordinal(p.bestRank)} at best`;
+    return p.eliminated ? "Can't win from here" : "";
   };
 
   const entry = (p, cls, delay) => !p ? "" : `

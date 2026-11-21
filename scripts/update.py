@@ -13,6 +13,7 @@ In CI:         python scripts/update.py
 import argparse
 import csv
 import io
+import itertools
 import json
 import os
 import re
@@ -520,7 +521,102 @@ def order(people, scored, scheduled, actual_total=None, complete=False):
     return rows, projected
 
 
-def compose(games, people, season, team, photos=None):
+def beats(a, b, total, guess):
+    """Does entrant `a` finish ahead of `b` at this season point total?"""
+    ka = abs(total - guess[a]) if guess.get(a) is not None else 10**9
+    kb = abs(total - guess[b]) if guess.get(b) is not None else 10**9
+    return ka < kb or (ka == kb and a.lower() < b.lower())
+
+
+def contention(games, people, cfg):
+    """Who can still win, and the best place each can still finish.
+
+    The honest way, rather than comparing ceilings against the current leader:
+    play out every combination of results still to come, score everyone, and
+    apply the real tiebreaker across the range of season point totals that
+    combination allows. Someone is out only when there is no future at all in
+    which they finish first.
+
+    This catches what a ceiling check cannot — that everyone's remaining games
+    are the same games, so you gain no ground on someone who picked them the
+    way you did, and that the tiebreaker can already be decided.
+    """
+    official = [g for g in games if g["state"] == "official"]
+    remaining = [g for g in games if g["state"] != "official"]
+    if not remaining or not people:
+        return None                       # season over: the standings say it
+
+    points = sum(g["nebraskaPoints"] or 0 for g in official)
+    wins = sum(1 for g in official if g["result"] == "W")
+    names = [p["name"] for p in people]
+    guess = {p["name"]: p["guess"] for p in people}
+    base = {p["name"]: sum(1 for g in official
+                           if p["picks"].get(g["column"]) == g["result"])
+            for p in people}
+
+    bowl_cols = {c.lower() for c in cfg.get("bowlColumns", [])}
+    eligible_at = int(cfg.get("bowlEligibleAt", 6))
+    regular_left = sum(1 for g in remaining if g["column"].lower() not in bowl_cols)
+    cap = int(cfg.get("maxPointsPerGame", 70))
+
+    def choices(g):
+        if g["column"].lower() not in bowl_cols:
+            return ("W", "L")
+        if wins >= eligible_at:                      # bowl eligible already
+            return ("W", "L")
+        if wins + regular_left < eligible_at:        # can no longer get there
+            return ("N",)
+        return ("W", "L", "N")
+
+    opts = [choices(g) for g in remaining]
+    combos = 1
+    for o in opts:
+        combos *= len(o)
+    if combos > 60000:                    # too early for this to say anything
+        return None
+
+    span = {"W": (3, cap), "L": (0, cap), "N": (0, 0)}
+    best = {n: len(names) for n in names}
+    can_win = {n: False for n in names}
+
+    for combo in itertools.product(*opts):
+        lo = points + sum(span[r][0] for r in combo)
+        hi = points + sum(span[r][1] for r in combo)
+
+        score = {}
+        for p in people:
+            s = base[p["name"]]
+            for g, res in zip(remaining, combo):
+                if p["picks"].get(g["column"]) == res:
+                    s += 1
+            score[p["name"]] = s
+
+        groups = {}
+        for n in names:
+            groups.setdefault(score[n], []).append(n)
+
+        ahead, run = {}, 0
+        for s in sorted(groups, reverse=True):
+            ahead[s] = run
+            run += len(groups[s])
+
+        for s, members in groups.items():
+            for n in members:
+                # The total that flatters n most is their own guess, pulled
+                # into whatever range this combination of results allows.
+                g_n = guess.get(n)
+                total = lo if g_n is None else min(max(g_n, lo), hi)
+                place = ahead[s] + 1 + sum(1 for m in members
+                                           if m != n and beats(m, n, total, guess))
+                if place < best[n]:
+                    best[n] = place
+                if place == 1:
+                    can_win[n] = True
+
+    return {"canWin": can_win, "bestRank": best}
+
+
+def compose(games, people, season, team, photos=None, cfg=None):
     """Turn finished games plus everyone's picks into the payload the page reads."""
     lookup = {k.strip().lower(): v for k, v in (photos or {}).items()}
     for p in people:
@@ -554,6 +650,7 @@ def compose(games, people, season, team, photos=None):
     previous = history[-2]["ranks"] if len(history) >= 2 else None
     leader = rows[0]["correct"] if rows else 0
     picks_by_name = {p["name"]: p["picks"] for p in people}
+    race = contention(games, people, cfg or {})
 
     standings = []
     for r in rows:
@@ -562,13 +659,19 @@ def compose(games, people, season, team, photos=None):
                          if g["state"] != "official" and pick)
         ceiling = r["correct"] + still_open
         was = previous.get(r["name"], {}).get("rank") if previous else None
+        if race:
+            out = not race["canWin"][r["name"]]
+            best_place = race["bestRank"][r["name"]]
+        else:
+            out = (not complete) and ceiling < leader
+            best_place = None
         standings.append({
             **r,
             "picks": picks,
             "maxPossible": ceiling,
+            "bestRank": best_place,
             "movement": (was - r["rank"]) if was is not None else None,
-            # You're out when even a perfect finish can't catch the current leader.
-            "eliminated": (not complete) and ceiling < leader,
+            "eliminated": out,
         })
 
     # What's next, and how the pool called it.
@@ -664,7 +767,7 @@ def build(cfg):
         "teamAbbr": cfg.get("teamAbbr", "NEB"),
         "teamColor": cfg.get("teamColor", "#E41C38"),
     }
-    return compose(games, people, cfg["season"], team, cfg.get("photos"))
+    return compose(games, people, cfg["season"], team, cfg.get("photos"), cfg)
 
 
 def main():

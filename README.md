@@ -107,9 +107,30 @@ next run, including the chart and every movement arrow.
 
 - **Movement** on each card compares the current rank to the rank before the
   most recent game. No arrow means no change.
-- **Eliminated** means that even a perfect finish can't reach the leader's
-  current score. Those cards grey out and the panel header counts how many can
-  still win. Nobody is eliminated until it's mathematically true.
+- **Who can still win** is worked out the honest way: every combination of
+  results still to come is played out, everyone is scored, and the real
+  tiebreaker is applied across the range of season point totals that each
+  combination allows. You're out only when there is no future at all in which
+  you finish first. Those cards grey out, and the panel header counts how many
+  are left.
+
+  A ceiling check — "could your best finish reach the leader's score?" — is far
+  too generous, for two reasons it can't see. Everyone's remaining games are the
+  *same* games, so you gain no ground on someone who picked them the way you
+  did; and the tiebreaker can already be settled. In 2026 at 11 games the
+  ceiling rule said 21 of 24 were alive. The real number was 9 — and one of the
+  three people tied for the lead was already out, because two others had filed
+  an identical ballot and both sat closer on the tiebreaker.
+
+- **Best finish** on each card is the highest place that entrant can still
+  reach, across those same scenarios. Second place matters when it pays, so the
+  card says "3rd at best" rather than just marking someone out.
+
+- Two optional settings in `config.json` steer the sweep. `maxPointsPerGame`
+  (default 70) caps how many points a single remaining game can add when
+  testing tiebreaker outcomes — generous on purpose, so nobody is eliminated on
+  a guess about scoring. `bowlEligibleAt` (default 6) is the win total that
+  makes a bowl certain; past it, a *Do Not Qualify* pick can no longer score.
 - **The chart** plots each person's rank across every finished game. Drag the
   slider or press play and the faces move to their position that week.
 
