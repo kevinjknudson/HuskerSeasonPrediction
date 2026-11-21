@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T20:49:02+00:00",
+  "generatedAt": "2026-11-21T21:42:41+00:00",
   "season": 2026,
   "seasonComplete": false,
   "teamLogo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
@@ -13,7 +13,7 @@
     "pointsSoFar": 334,
     "projectedPoints": 395
   },
-  "aliveCount": 21,
+  "aliveCount": 9,
   "nextGame": {
     "column": "Nebraska at Iowa",
     "opponent": "Iowa Hawkeyes",
@@ -1663,6 +1663,7 @@
         "L"
       ],
       "maxPossible": 12,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1692,6 +1693,7 @@
         "L"
       ],
       "maxPossible": 12,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1721,8 +1723,9 @@
         "L"
       ],
       "maxPossible": 12,
+      "bestRank": 2,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Bo Nix",
@@ -1750,6 +1753,7 @@
         "W"
       ],
       "maxPossible": 11,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1779,6 +1783,7 @@
         "W"
       ],
       "maxPossible": 11,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1808,6 +1813,7 @@
         "L"
       ],
       "maxPossible": 11,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1837,8 +1843,9 @@
         "L"
       ],
       "maxPossible": 11,
+      "bestRank": 4,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Ross Rasmussen",
@@ -1866,6 +1873,7 @@
         "L"
       ],
       "maxPossible": 11,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1895,6 +1903,7 @@
         "W"
       ],
       "maxPossible": 11,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1924,6 +1933,7 @@
         "L"
       ],
       "maxPossible": 11,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1953,6 +1963,7 @@
         "L"
       ],
       "maxPossible": 11,
+      "bestRank": 1,
       "movement": 0,
       "eliminated": false
     },
@@ -1982,8 +1993,9 @@
         "N"
       ],
       "maxPossible": 11,
+      "bestRank": 5,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "AJ",
@@ -2011,8 +2023,9 @@
         "W"
       ],
       "maxPossible": 10,
+      "bestRank": 3,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Benny Nahrstadt",
@@ -2040,8 +2053,9 @@
         "L"
       ],
       "maxPossible": 10,
+      "bestRank": 8,
       "movement": -1,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Callie",
@@ -2069,8 +2083,9 @@
         "W"
       ],
       "maxPossible": 10,
+      "bestRank": 3,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Dave Shellhammer",
@@ -2098,8 +2113,9 @@
         "W"
       ],
       "maxPossible": 10,
+      "bestRank": 3,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Eric Spain",
@@ -2127,8 +2143,9 @@
         "L"
       ],
       "maxPossible": 10,
+      "bestRank": 5,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Bailey Rasmussen",
@@ -2156,8 +2173,9 @@
         "W"
       ],
       "maxPossible": 10,
+      "bestRank": 3,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Zac Gillman",
@@ -2185,8 +2203,9 @@
         "N"
       ],
       "maxPossible": 10,
+      "bestRank": 10,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Dylan Ragonese",
@@ -2214,8 +2233,9 @@
         "L"
       ],
       "maxPossible": 10,
+      "bestRank": 6,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Sandy",
@@ -2243,8 +2263,9 @@
         "L"
       ],
       "maxPossible": 10,
+      "bestRank": 11,
       "movement": 0,
-      "eliminated": false
+      "eliminated": true
     },
     {
       "name": "Kevin V",
@@ -2272,6 +2293,7 @@
         "W"
       ],
       "maxPossible": 9,
+      "bestRank": 15,
       "movement": 0,
       "eliminated": true
     },
@@ -2301,6 +2323,7 @@
         "W"
       ],
       "maxPossible": 8,
+      "bestRank": 21,
       "movement": 0,
       "eliminated": true
     },
@@ -2330,6 +2353,7 @@
         "W"
       ],
       "maxPossible": 7,
+      "bestRank": 24,
       "movement": 0,
       "eliminated": true
     }
